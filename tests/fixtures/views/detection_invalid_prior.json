@@ -1,0 +1,13 @@
+{
+  "view_version": "detection-view-v1",
+  "task": "attack_detection",
+  "sample_id": "invalid-detection-prior-001",
+  "granularity": "request",
+  "traffic": {
+    "representation": {"representation_type": "http_request", "method": "GET", "host": null, "path": "/", "query": null, "body": null},
+    "statistics": null
+  },
+  "context": {"security": {"rule_hits": [], "threat_intel_hit": null}},
+  "priors": {"business": {"business_domain": "unknown", "business_type": "unknown", "confidence": 0.5}},
+  "quality": {"parse_status": "ok", "source_representation": "http_request", "missing_fields": [], "warnings": []}
+}

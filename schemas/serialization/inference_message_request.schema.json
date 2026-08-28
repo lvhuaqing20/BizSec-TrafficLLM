@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/serialization/inference_message_request.schema.json",
+  "title": "Inference Message Request v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["message_version", "sample_id", "task", "messages", "metadata"],
+  "properties": {
+    "message_version": {"const": "inference-message-request-v1"},
+    "sample_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "task": {"type": "string", "enum": ["business", "detection", "attack_type"]},
+    "messages": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/systemMessage"},
+        {"$ref": "#/$defs/userMessage"}
+      ],
+      "items": false
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["template_version"],
+      "properties": {
+        "template_version": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "messageBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "content"],
+      "properties": {
+        "role": {"type": "string"},
+        "content": {"type": "string", "minLength": 1}
+      }
+    },
+    "systemMessage": {
+      "allOf": [
+        {"$ref": "#/$defs/messageBase"},
+        {"properties": {"role": {"const": "system"}}}
+      ]
+    },
+    "userMessage": {
+      "allOf": [
+        {"$ref": "#/$defs/messageBase"},
+        {"properties": {"role": {"const": "user"}}}
+      ]
+    }
+  }
+}

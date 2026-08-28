@@ -1,0 +1,4 @@
+{
+  "base_fixture": "valid/packet_business.json",
+  "mutation": {"path": "sample_id", "value": "0000000000000000000000000000000000000000000000000000000000000000"}
+}

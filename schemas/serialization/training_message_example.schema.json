@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/serialization/training_message_example.schema.json",
+  "title": "Training Message Example v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["message_version", "sample_id", "task", "messages", "metadata"],
+  "properties": {
+    "message_version": {"const": "training-message-example-v1"},
+    "sample_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "task": {"type": "string", "enum": ["business", "detection", "attack_type"]},
+    "messages": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {"$ref": "#/$defs/systemMessage"},
+        {"$ref": "#/$defs/userMessage"},
+        {"$ref": "#/$defs/assistantMessage"}
+      ],
+      "items": false
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataset_id", "split", "template_version", "source_example_version"],
+      "properties": {
+        "dataset_id": {"type": "string", "minLength": 1},
+        "split": {"type": "string", "enum": ["train", "test"]},
+        "template_version": {"type": "string", "minLength": 1},
+        "source_example_version": {"const": "task-training-example-v1"}
+      }
+    }
+  },
+  "$defs": {
+    "messageBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "content"],
+      "properties": {
+        "role": {"type": "string"},
+        "content": {"type": "string", "minLength": 1}
+      }
+    },
+    "systemMessage": {
+      "allOf": [
+        {"$ref": "#/$defs/messageBase"},
+        {"properties": {"role": {"const": "system"}}}
+      ]
+    },
+    "userMessage": {
+      "allOf": [
+        {"$ref": "#/$defs/messageBase"},
+        {"properties": {"role": {"const": "user"}}}
+      ]
+    },
+    "assistantMessage": {
+      "allOf": [
+        {"$ref": "#/$defs/messageBase"},
+        {"properties": {"role": {"const": "assistant"}}}
+      ]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "privacy_version": "canonical-privacy-v1",
+  "network": {
+    "store_exact_ip": false,
+    "store_mac": false,
+    "store_absolute_time": false,
+    "internal_cidrs": [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "fc00::/7"
+    ]
+  },
+  "http": {
+    "sensitive_parameter_names_case_insensitive": [
+      "password",
+      "passwd",
+      "pwd",
+      "username",
+      "user",
+      "login",
+      "session",
+      "sessionid",
+      "token",
+      "authorization",
+      "cookie",
+      "email",
+      "dni",
+      "ntc",
+      "creditcard",
+      "card_number"
+    ],
+    "long_digit_min_length": 8,
+    "redaction_tokens": {
+      "sensitive_value": "<REDACTED>",
+      "email": "<EMAIL>",
+      "long_number": "<NUM>"
+    }
+  },
+  "payload": {
+    "max_content_characters": 512,
+    "hex_only": true,
+    "on_non_hex": "summary_hash"
+  }
+}

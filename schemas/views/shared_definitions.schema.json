@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/views/shared_definitions.schema.json",
+  "title": "Shared View Definitions v1",
+  "$defs": {
+    "granularity": {
+      "type": "string",
+      "enum": ["packet", "request", "direction_sequence", "flow", "window"]
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parse_status", "source_representation", "missing_fields"],
+      "properties": {
+        "parse_status": {"type": "string", "enum": ["ok", "partial"]},
+        "source_representation": {
+          "type": "string",
+          "enum": ["packet", "http_request", "direction_sequence", "flow", "window"]
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "warnings": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true,
+          "default": []
+        }
+      }
+    },
+    "businessPrior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["business_domain", "business_type"],
+      "properties": {
+        "business_domain": {
+          "type": "string",
+          "enum": ["application", "website", "network_behavior", "unknown"]
+        },
+        "business_type": {"type": "string", "minLength": 1}
+      }
+    },
+    "payloadEvidence": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["length", "encoding", "content"],
+      "properties": {
+        "length": {"type": "integer", "minimum": 0},
+        "encoding": {"type": "string", "enum": ["none", "hex", "text", "summary"]},
+        "content": {"type": ["string", "null"]}
+      }
+    },
+    "packetRepresentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["representation_type", "protocols", "direction", "packet_length", "network", "transport", "tls", "payload"],
+      "properties": {
+        "representation_type": {"const": "packet"},
+        "protocols": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "direction": {"type": "string", "enum": ["inbound", "outbound", "lateral", "unknown"]},
+        "packet_length": {"type": "integer", "minimum": 0},
+        "network": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ip_version", "src_role", "dst_role"],
+          "properties": {
+            "ip_version": {"type": ["integer", "null"], "enum": [4, 6, null]},
+            "src_role": {"type": "string", "enum": ["internal", "external", "unknown"]},
+            "dst_role": {"type": "string", "enum": ["internal", "external", "unknown"]}
+          }
+        },
+        "transport": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["protocol", "src_port", "dst_port", "tcp_flags"],
+          "properties": {
+            "protocol": {"type": "string", "enum": ["tcp", "udp", "icmp", "other"]},
+            "src_port": {"type": ["integer", "null"], "minimum": 0, "maximum": 65535},
+            "dst_port": {"type": ["integer", "null"], "minimum": 0, "maximum": 65535},
+            "tcp_flags": {
+              "type": "array",
+              "items": {"type": "string", "enum": ["FIN", "SYN", "RST", "PSH", "ACK", "URG", "ECE", "CWR"]},
+              "uniqueItems": true
+            }
+          }
+        },
+        "tls": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["sni", "alpn", "version"],
+          "properties": {
+            "sni": {"type": ["string", "null"]},
+            "alpn": {"type": ["string", "null"]},
+            "version": {"type": ["string", "null"]}
+          }
+        },
+        "payload": {"$ref": "#/$defs/payloadEvidence"}
+      }
+    },
+    "httpRepresentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["representation_type", "method", "host", "path", "query", "body"],
+      "properties": {
+        "representation_type": {"const": "http_request"},
+        "method": {"type": "string", "minLength": 1},
+        "host": {"type": ["string", "null"]},
+        "path": {"type": "string", "minLength": 1},
+        "query": {"type": ["string", "null"]},
+        "body": {"type": ["string", "null"]}
+      }
+    },
+    "directionSequenceRepresentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["representation_type", "encoding", "sequence"],
+      "properties": {
+        "representation_type": {"const": "direction_sequence"},
+        "encoding": {"const": "binary"},
+        "sequence": {"type": "string", "pattern": "^[01]+$", "minLength": 1}
+      }
+    },
+    "statistics": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "qps": {"type": ["number", "null"], "minimum": 0},
+        "pps": {"type": ["number", "null"], "minimum": 0},
+        "bps": {"type": ["number", "null"], "minimum": 0},
+        "baseline_deviation": {"type": ["number", "null"], "minimum": 0},
+        "syn_ratio": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "connection_failure_rate": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "uri_concentration": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "failed_login_rate": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "src_ip_entropy": {"type": ["number", "null"], "minimum": 0}
+      }
+    }
+  }
+}

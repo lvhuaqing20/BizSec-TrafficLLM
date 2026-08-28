@@ -1,0 +1,50 @@
+{
+  "policy_version": "view-token-budget-v1",
+  "tokenizer_source": "deployment_model_profile",
+  "max_input_tokens_source": "deployment_model_profile",
+  "reserved_output_tokens": 64,
+  "overflow_strategy": "deterministic_priority_pruning",
+  "priority_order": ["P3", "P2", "P1"],
+  "never_remove_priority": ["P0"],
+  "pre_tokenization_limits": {
+    "business": {
+      "payload_content_max_chars": 256,
+      "http_query_max_chars": 512,
+      "http_body_max_chars": 512,
+      "direction_sequence_max_chars": 4096
+    },
+    "detection": {
+      "payload_content_max_chars": 2048,
+      "http_query_max_chars": 2048,
+      "http_body_max_chars": 4096
+    },
+    "attack_type": {
+      "payload_content_max_chars": 4096,
+      "http_query_max_chars": 2048,
+      "http_body_max_chars": 4096
+    }
+  },
+  "view_priority_overrides": {
+    "business": {
+      "promote": ["tls_sni", "http_host", "http_path", "service_name", "direction_sequence"],
+      "demote": ["payload_content", "quality_warnings"]
+    },
+    "detection": {
+      "promote": ["http_method", "http_path", "baseline_deviation", "syn_ratio", "connection_failure_rate", "business_prior_type"],
+      "demote": ["tls_version", "quality_warnings"]
+    },
+    "attack_type": {
+      "promote": ["http_method", "http_path", "http_query", "http_body", "payload_content", "rule_hits"],
+      "demote": ["src_port", "tls_version", "quality_warnings"]
+    }
+  },
+  "pruning_steps": [
+    "remove_empty_optional_fields",
+    "remove_P3_fields_except_promoted",
+    "truncate_payload_and_http_content_to_view_limits",
+    "remove_P2_fields_except_promoted",
+    "truncate_direction_sequence_tail",
+    "remove_P1_fields_except_promoted",
+    "fail_if_P0_fields_still_exceed_budget"
+  ]
+}

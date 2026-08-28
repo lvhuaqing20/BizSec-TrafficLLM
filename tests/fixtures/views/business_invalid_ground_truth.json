@@ -1,0 +1,14 @@
+{
+  "view_version": "business-view-v1",
+  "task": "business_classification",
+  "sample_id": "invalid-business-leak-001",
+  "granularity": "direction_sequence",
+  "traffic": {
+    "representation": {"representation_type": "direction_sequence", "encoding": "binary", "sequence": "11000110"},
+    "statistics": null
+  },
+  "context": {"asset_type": null, "service_name": null},
+  "priors": {},
+  "quality": {"parse_status": "ok", "source_representation": "direction_sequence", "missing_fields": [], "warnings": []},
+  "ground_truth": {"business_type": "example.com"}
+}

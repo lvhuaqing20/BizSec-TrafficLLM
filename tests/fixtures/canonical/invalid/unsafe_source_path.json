@@ -1,0 +1,4 @@
+{
+  "base_fixture": "valid/packet_business.json",
+  "mutation": {"path": "source.source_file", "value": "../private/source.json"}
+}

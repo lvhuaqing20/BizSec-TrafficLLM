@@ -1,0 +1,17 @@
+{
+  "validation_version": "phase1-contract-validation-v1",
+  "status": "passed",
+  "checks": {
+    "registry_and_audit_invariants": "passed",
+    "schema_validation": "jsonschema Draft 2020-12 validation executed",
+    "adapter_schemas": 3,
+    "pipeline_schemas": 1,
+    "dataset_variants": 11,
+    "records_checked": 544381,
+    "declared_labels_checked": 290,
+    "review_required_items": [
+      "iscx-botnet-2014/IRC"
+    ]
+  },
+  "errors": []
+}

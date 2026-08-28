@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/pipeline/analysis_result.schema.json",
+  "title": "BizSec Pipeline Analysis Result v1",
+  "description": "Final orchestration result. This is not an Adapter output schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "business_type",
+    "is_attack",
+    "risk_score",
+    "attack_type",
+    "risk_level",
+    "evidence",
+    "recommended_action",
+    "model_backend",
+    "schema_version"
+  ],
+  "properties": {
+    "request_id": {"type": "string", "minLength": 1},
+    "business_type": {"type": "string", "minLength": 1},
+    "is_attack": {"type": "boolean"},
+    "risk_score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+    "attack_type": {"type": "string", "minLength": 1},
+    "risk_level": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+    "evidence": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "recommended_action": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "model_backend": {"type": "string", "minLength": 1},
+    "schema_version": {"type": "string", "const": "1.0"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"is_attack": {"const": false}}, "required": ["is_attack"]},
+      "then": {"properties": {"attack_type": {"const": "benign"}}}
+    },
+    {
+      "if": {"properties": {"is_attack": {"const": true}}, "required": ["is_attack"]},
+      "then": {"properties": {"attack_type": {"not": {"const": "benign"}}}}
+    }
+  ]
+}

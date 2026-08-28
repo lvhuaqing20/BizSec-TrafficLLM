@@ -1,0 +1,13 @@
+{
+  "view_version": "attack-type-view-v1",
+  "task": "attack_type_classification",
+  "sample_id": "invalid-attack-prior-001",
+  "granularity": "request",
+  "traffic": {
+    "representation": {"representation_type": "http_request", "method": "POST", "host": null, "path": "/login", "query": null, "body": "username=a"},
+    "statistics": null
+  },
+  "context": {"security": {"rule_hits": []}},
+  "priors": {"business": null, "detection": {"is_attack": true}},
+  "quality": {"parse_status": "ok", "source_representation": "http_request", "missing_fields": [], "warnings": []}
+}

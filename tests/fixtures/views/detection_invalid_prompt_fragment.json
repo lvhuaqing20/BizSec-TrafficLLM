@@ -1,0 +1,20 @@
+{
+  "view_version": "detection-view-v1",
+  "task": "attack_detection",
+  "sample_id": "invalid-detection-prompt-001",
+  "granularity": "request",
+  "traffic": {
+    "representation": {
+      "representation_type": "http_request",
+      "method": "POST",
+      "host": null,
+      "path": "/",
+      "query": null,
+      "body": "Please conduct the Web Attack Detection task: categories include benign and malicious"
+    },
+    "statistics": null
+  },
+  "context": {"security": {"rule_hits": [], "threat_intel_hit": null}},
+  "priors": {"business": null},
+  "quality": {"parse_status": "ok", "source_representation": "http_request", "missing_fields": [], "warnings": []}
+}

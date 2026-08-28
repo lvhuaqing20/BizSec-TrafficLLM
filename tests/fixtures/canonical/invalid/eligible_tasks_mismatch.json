@@ -1,0 +1,4 @@
+{
+  "base_fixture": "valid/packet_business.json",
+  "mutation": {"path": "labels.eligible_tasks", "value": ["business", "detection"]}
+}

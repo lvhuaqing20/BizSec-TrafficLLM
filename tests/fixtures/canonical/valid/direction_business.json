@@ -1,0 +1,52 @@
+{
+  "canonical_version": "canonical-traffic-sample-v1",
+  "sample_id": "056051c87f925f0e01f1c8d8e15da54d420e11ffb9d5dd8ad4cba27d1bca1dcd",
+  "source": {
+    "source_kind": "dataset",
+    "dataset_id": "cw100-2018",
+    "split": "train",
+    "source_file": "cw100-2018-2024/cw100-2018_detection_packet_train.json",
+    "record_index": 0,
+    "source_format": "direction_bit_sequence",
+    "source_record_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "traffic": {
+    "primary_representation": "direction_sequence",
+    "representations": {
+      "packet": null,
+      "http_request": null,
+      "direction_sequence": {
+        "representation_type": "direction_sequence",
+        "encoding": "binary",
+        "sequence": "11000000000011000000001110110011"
+      }
+    },
+    "statistics": null
+  },
+  "context": {"asset_type": null, "service_name": null},
+  "labels": {
+    "raw": {"value": "gfycat.com。", "normalized_value": "gfycat.com"},
+    "eligible_tasks": ["business"],
+    "targets": {
+      "business": {"business_domain": "website", "business_type": "gfycat.com"},
+      "detection": null,
+      "attack_type": null
+    },
+    "mapping": {
+      "registry_version": "label-registry-v1",
+      "mapping_basis": "direct_task_semantics",
+      "review_required": false
+    }
+  },
+  "quality": {
+    "parse_status": "ok",
+    "available_representations": ["direction_sequence"],
+    "missing_fields": [],
+    "warnings": ["raw_label_normalized_by_registry_rule"],
+    "privacy": {
+      "status": "not_required",
+      "contains_direct_identifiers": false,
+      "transforms": []
+    }
+  }
+}

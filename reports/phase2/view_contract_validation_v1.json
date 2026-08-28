@@ -1,0 +1,20 @@
+{
+  "validation_version": "phase2-view-validation-v1",
+  "status": "passed",
+  "schema_validation": "jsonschema Draft 2020-12 validation executed",
+  "checks": {
+    "view_schemas": 3,
+    "shared_definition_schemas": 1,
+    "registered_fields": 55,
+    "forbidden_fields": 8,
+    "leakage_key_rules": 17,
+    "leakage_content_patterns": 6,
+    "view_schema_documents": 4,
+    "schema_references_checked": 19,
+    "valid_fixtures": 4,
+    "valid_fixtures_accepted": 4,
+    "invalid_fixtures": 5,
+    "invalid_fixtures_rejected": 5
+  },
+  "errors": []
+}

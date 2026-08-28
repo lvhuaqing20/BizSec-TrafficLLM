@@ -1,0 +1,8 @@
+{
+  "check_version": "phase4-pilot-determinism-v1",
+  "scope": "11 datasets x train/test x first 20 records",
+  "records": 440,
+  "first_combined_content_sha256": "43d131264dd7a9dc31f238de3b818f3c5ed454f95b59967fedebe5ec64ea00ae",
+  "repeat_combined_content_sha256": "43d131264dd7a9dc31f238de3b818f3c5ed454f95b59967fedebe5ec64ea00ae",
+  "identical": true
+}

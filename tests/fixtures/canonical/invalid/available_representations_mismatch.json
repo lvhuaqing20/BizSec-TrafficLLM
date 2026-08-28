@@ -1,0 +1,4 @@
+{
+  "base_fixture": "valid/http_detection.json",
+  "mutation": {"path": "quality.available_representations", "value": ["packet", "http_request"]}
+}

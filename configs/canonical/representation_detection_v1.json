@@ -1,0 +1,38 @@
+{
+  "detection_version": "representation-detection-v1",
+  "policy": {
+    "inspect_actual_content": true,
+    "dataset_config_is_expectation_only": true,
+    "on_declared_content_mismatch": "conversion_error",
+    "on_ambiguous_match": "conversion_error",
+    "allow_forced_conversion": false,
+    "failed_records_are_canonical_samples": false
+  },
+  "detectors": [
+    {
+      "representation_type": "http_request",
+      "parser_id": "csic_http_json_v1",
+      "required_content_markers": ["method", "url", "body"],
+      "extraction_boundary": "last_json_object_in_instruction",
+      "normalized_target": "traffic.representations.http_request"
+    },
+    {
+      "representation_type": "direction_sequence",
+      "parser_id": "binary_direction_sequence_v1",
+      "required_pattern": "Input\\s*[:：]\\s*([01]+)\\s*$",
+      "normalized_target": "traffic.representations.direction_sequence"
+    },
+    {
+      "representation_type": "packet",
+      "parser_id": "tshark_packet_text_v1",
+      "required_any_prefixes": ["frame.", "ip.", "ipv6.", "tcp.", "udp.", "tls."],
+      "minimum_distinct_prefixes": 2,
+      "normalized_target": "traffic.representations.packet"
+    }
+  ],
+  "task_view_permissions": {
+    "business": ["packet", "http_request", "direction_sequence"],
+    "detection": ["packet", "http_request"],
+    "attack_type": ["packet", "http_request"]
+  }
+}

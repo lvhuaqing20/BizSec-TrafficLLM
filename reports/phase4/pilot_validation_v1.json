@@ -1,0 +1,41 @@
+{
+  "validation_version": "converted-canonical-jsonl-v1",
+  "status": "passed",
+  "validation_mode": "draft-2020-12+semantic",
+  "canonical_files": 22,
+  "records_validated": 440,
+  "combined_content_sha256": "43d131264dd7a9dc31f238de3b818f3c5ed454f95b59967fedebe5ec64ea00ae",
+  "parse_statuses": {
+    "ok": 360,
+    "partial": 80
+  },
+  "representations": {
+    "direction_sequence": 40,
+    "http_request": 40,
+    "packet": 360
+  },
+  "missing_fields": {
+    "traffic.representations.http_request.host": 40,
+    "traffic.representations.packet.network.dst_role": 40,
+    "traffic.representations.packet.network.src_role": 40
+  },
+  "warnings": {
+    "http_privacy_scan_completed_no_sensitive_value_match": 9,
+    "non_hex_payload_replaced_by_summary_hash": 23,
+    "payload_content_truncated": 148
+  },
+  "privacy_transforms": {
+    "drop_absolute_time": 360,
+    "drop_mac": 360,
+    "ip_to_role": 360,
+    "redact_sensitive_http_values": 40,
+    "summarize_non_hex_payload": 23,
+    "truncate_payload_hex": 148
+  },
+  "eligible_tasks": {
+    "attack_type": 124,
+    "business": 250,
+    "detection": 200
+  },
+  "errors": []
+}

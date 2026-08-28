@@ -1,0 +1,33 @@
+{
+  "validation_version": "training-messages-validation-v1",
+  "status": "passed",
+  "files": 66,
+  "limit_per_file": null,
+  "counts": {
+    "attack_type": 100462,
+    "business": 390279,
+    "detection": 170423
+  },
+  "split_counts": {
+    "test": 43012,
+    "train": 618152
+  },
+  "task_split_counts": {
+    "attack_type:test": 8233,
+    "attack_type:train": 92229,
+    "business:test": 19341,
+    "business:train": 370938,
+    "detection:test": 15438,
+    "detection:train": 154985
+  },
+  "unique_sample_task_pairs": 661164,
+  "duplicate_sample_task_pairs": 0,
+  "combined_content_sha256": "d8ec9e8e85d288c149f07d9764cfdb2a6a17cde93c6634ed9c0c2134fea8e17a",
+  "checks": {
+    "message_schema": "passed",
+    "deterministic_source_equivalence": "passed",
+    "view_target_separation": "passed",
+    "train_test_path_preservation": "passed"
+  },
+  "errors": []
+}

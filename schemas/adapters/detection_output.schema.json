@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/adapters/detection_output.schema.json",
+  "title": "Detection Adapter Output v1",
+  "description": "Shared schema for the Detection Adapter training target and inference output.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["is_attack"],
+  "properties": {
+    "is_attack": {
+      "type": "boolean"
+    }
+  }
+}

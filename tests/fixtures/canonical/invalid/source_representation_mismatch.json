@@ -1,0 +1,4 @@
+{
+  "base_fixture": "valid/http_detection.json",
+  "mutation": {"path": "traffic.primary_representation", "value": "packet"}
+}

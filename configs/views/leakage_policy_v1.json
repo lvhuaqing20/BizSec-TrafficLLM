@@ -1,0 +1,45 @@
+{
+  "policy_version": "view-leakage-policy-v1",
+  "action": "reject_view",
+  "forbidden_keys_case_insensitive": [
+    "output",
+    "raw_label",
+    "normalized_label",
+    "original_id",
+    "ground_truth",
+    "target",
+    "label",
+    "labels",
+    "candidate_labels",
+    "instruction",
+    "prompt",
+    "is_attack_label",
+    "attack_type_label",
+    "attack_family_label",
+    "confidence",
+    "evidence_codes",
+    "decision_source"
+  ],
+  "forbidden_content_patterns_case_insensitive": [
+    "ground\\s+truth\\s*(label|is)",
+    "correct\\s+answer\\s*(is|:)",
+    "target\\s+label\\s*(is|:)",
+    "categories\\s+include",
+    "only\\s+output\\s+['\\\"]?(malicious|benign)",
+    "please\\s+conduct\\s+the\\s+.*task"
+  ],
+  "forbidden_source_material": [
+    "original_instruction_prefix",
+    "dataset_candidate_class_list",
+    "training_output",
+    "label_registry_target"
+  ],
+  "allowed_prior_paths": [
+    "priors.business.business_domain",
+    "priors.business.business_type"
+  ],
+  "notes": [
+    "Observable values such as a real SNI containing gmail are not rejected merely because they match a class name.",
+    "Leakage checks focus on provenance, keys, prompt fragments, and candidate lists rather than globally banning label strings."
+  ]
+}

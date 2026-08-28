@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/views/business_view.schema.json",
+  "title": "Business View v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["view_version", "task", "sample_id", "granularity", "traffic", "context", "priors", "quality"],
+  "properties": {
+    "view_version": {"const": "business-view-v1"},
+    "task": {"const": "business_classification"},
+    "sample_id": {"type": "string", "minLength": 1},
+    "granularity": {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/granularity"},
+    "traffic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["representation", "statistics"],
+      "properties": {
+        "representation": {
+          "oneOf": [
+            {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/packetRepresentation"},
+            {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/httpRepresentation"},
+            {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/directionSequenceRepresentation"}
+          ]
+        },
+        "statistics": {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/statistics"}
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_type", "service_name"],
+      "properties": {
+        "asset_type": {"type": ["string", "null"]},
+        "service_name": {"type": ["string", "null"]}
+      }
+    },
+    "priors": {"type": "object", "additionalProperties": false},
+    "quality": {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/quality"}
+  }
+}

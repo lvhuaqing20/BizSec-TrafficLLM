@@ -1,0 +1,22 @@
+{
+  "view_version": "attack-type-view-v1",
+  "task": "attack_type_classification",
+  "sample_id": "sample-attack-packet-001",
+  "granularity": "packet",
+  "traffic": {
+    "representation": {
+      "representation_type": "packet",
+      "protocols": ["ipv4", "tcp", "tls"],
+      "direction": "outbound",
+      "packet_length": 557,
+      "network": {"ip_version": 4, "src_role": "internal", "dst_role": "external"},
+      "transport": {"protocol": "tcp", "src_port": 49520, "dst_port": 443, "tcp_flags": ["PSH", "ACK"]},
+      "tls": {"sni": null, "alpn": null, "version": "TLS1.2"},
+      "payload": {"length": 503, "encoding": "summary", "content": "high_entropy_encrypted_payload"}
+    },
+    "statistics": {"qps": null, "pps": null, "bps": null, "baseline_deviation": null, "syn_ratio": null, "connection_failure_rate": null, "uri_concentration": null, "failed_login_rate": null, "src_ip_entropy": null}
+  },
+  "context": {"security": {"rule_hits": ["KNOWN_BOTNET_PATTERN"]}},
+  "priors": {"business": null},
+  "quality": {"parse_status": "partial", "source_representation": "packet", "missing_fields": ["traffic.representation.tls.sni"], "warnings": []}
+}

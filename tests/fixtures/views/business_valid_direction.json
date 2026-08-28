@@ -1,0 +1,17 @@
+{
+  "view_version": "business-view-v1",
+  "task": "business_classification",
+  "sample_id": "sample-business-direction-001",
+  "granularity": "direction_sequence",
+  "traffic": {
+    "representation": {
+      "representation_type": "direction_sequence",
+      "encoding": "binary",
+      "sequence": "110000000000110000000011101100"
+    },
+    "statistics": null
+  },
+  "context": {"asset_type": null, "service_name": null},
+  "priors": {},
+  "quality": {"parse_status": "ok", "source_representation": "direction_sequence", "missing_fields": [], "warnings": []}
+}

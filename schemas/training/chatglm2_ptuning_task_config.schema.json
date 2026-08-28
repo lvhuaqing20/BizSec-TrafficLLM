@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "chatglm2_ptuning_task_config.schema.json",
+  "title": "ChatGLM2 P-Tuning v2 Task Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "config_version",
+    "task",
+    "model_contract",
+    "messages_root",
+    "output_dir",
+    "max_source_length",
+    "max_target_length",
+    "length_status",
+    "validation",
+    "optimization"
+  ],
+  "properties": {
+    "config_version": {"const": "chatglm2-ptuning-task-v1"},
+    "task": {"enum": ["business", "detection", "attack_type"]},
+    "model_contract": {"const": "configs/models/chatglm2_6b_ptuning_v2.json"},
+    "messages_root": {"type": "string", "minLength": 1},
+    "output_dir": {"type": "string", "minLength": 1},
+    "max_source_length": {"type": "integer", "minimum": 1},
+    "max_target_length": {"type": "integer", "minimum": 1},
+    "length_status": {
+      "enum": ["provisional_until_token_audit", "validated_by_token_audit"]
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "fraction", "seed", "test_split_usage"],
+      "properties": {
+        "source": {"const": "deterministic_hash_partition_from_train"},
+        "fraction": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "seed": {"type": "integer"},
+        "test_split_usage": {"const": "final_evaluation_only"}
+      }
+    },
+    "optimization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "learning_rate",
+        "per_device_train_batch_size",
+        "gradient_accumulation_steps",
+        "max_steps",
+        "save_steps",
+        "seed"
+      ],
+      "properties": {
+        "learning_rate": {"type": "number", "exclusiveMinimum": 0},
+        "per_device_train_batch_size": {"type": "integer", "minimum": 1},
+        "gradient_accumulation_steps": {"type": "integer", "minimum": 1},
+        "max_steps": {"type": "integer", "minimum": 1},
+        "save_steps": {"type": "integer", "minimum": 1},
+        "seed": {"type": "integer"}
+      }
+    }
+  }
+}

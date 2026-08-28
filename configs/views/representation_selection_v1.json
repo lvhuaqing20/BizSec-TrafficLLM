@@ -1,0 +1,19 @@
+{
+  "selection_version": "view-representation-selection-v1",
+  "primary_if_allowed": true,
+  "tasks": {
+    "business": {
+      "allowed": ["packet", "http_request", "direction_sequence"],
+      "fallback_preference": ["http_request", "packet", "direction_sequence"]
+    },
+    "detection": {
+      "allowed": ["packet", "http_request"],
+      "fallback_preference": ["http_request", "packet"]
+    },
+    "attack_type": {
+      "allowed": ["packet", "http_request"],
+      "fallback_preference": ["http_request", "packet"]
+    }
+  },
+  "on_no_allowed_representation": "view_unavailable"
+}

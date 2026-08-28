@@ -1,0 +1,16 @@
+{
+  "fixture_version": "view-fixtures-v1",
+  "valid": [
+    {"file": "business_valid_packet.json", "schema": "business_view.schema.json"},
+    {"file": "business_valid_direction.json", "schema": "business_view.schema.json"},
+    {"file": "detection_valid_http.json", "schema": "detection_view.schema.json"},
+    {"file": "attack_type_valid_packet.json", "schema": "attack_type_view.schema.json"}
+  ],
+  "invalid": [
+    {"file": "business_invalid_ground_truth.json", "schema": "business_view.schema.json", "expected_rules": ["schema", "forbidden_key"]},
+    {"file": "detection_invalid_prior.json", "schema": "detection_view.schema.json", "expected_rules": ["schema", "forbidden_key"]},
+    {"file": "attack_type_invalid_detection_prior.json", "schema": "attack_type_view.schema.json", "expected_rules": ["schema"]},
+    {"file": "business_invalid_granularity.json", "schema": "business_view.schema.json", "expected_rules": ["representation_consistency"]},
+    {"file": "detection_invalid_prompt_fragment.json", "schema": "detection_view.schema.json", "expected_rules": ["forbidden_content"]}
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "canonical_version": "canonical-traffic-sample-v1",
+  "sample_id": "105abe854124af71d362ec7ed96594e288ca4ccbc62977a80e483ebf3e3c00c5",
+  "source": {
+    "source_kind": "dataset",
+    "dataset_id": "app53-2023",
+    "split": "train",
+    "source_file": "app53-2023/app53-2023_detection_packet_train.json",
+    "record_index": 0,
+    "source_format": "tshark_packet_text",
+    "source_record_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "traffic": {
+    "primary_representation": "packet",
+    "representations": {
+      "packet": {
+        "representation_type": "packet",
+        "protocols": ["eth", "ip", "tcp"],
+        "direction": "outbound",
+        "packet_length": 66,
+        "network": {"ip_version": 4, "src_role": "internal", "dst_role": "external"},
+        "transport": {"protocol": "tcp", "src_port": 44973, "dst_port": 443, "tcp_flags": ["ACK"]},
+        "tls": null,
+        "payload": null
+      },
+      "http_request": null,
+      "direction_sequence": null
+    },
+    "statistics": null
+  },
+  "context": {"asset_type": null, "service_name": null},
+  "labels": {
+    "raw": {"value": "com.pinterest", "normalized_value": "com.pinterest"},
+    "eligible_tasks": ["business"],
+    "targets": {
+      "business": {"business_domain": "application", "business_type": "com.pinterest"},
+      "detection": null,
+      "attack_type": null
+    },
+    "mapping": {
+      "registry_version": "label-registry-v1",
+      "mapping_basis": "direct_task_semantics",
+      "review_required": false
+    }
+  },
+  "quality": {
+    "parse_status": "ok",
+    "available_representations": ["packet"],
+    "missing_fields": [],
+    "warnings": [],
+    "privacy": {
+      "status": "applied",
+      "contains_direct_identifiers": false,
+      "transforms": ["ip_to_role", "drop_mac", "drop_absolute_time"]
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "base_fixture": "valid/direction_business.json",
+  "mutation": {"path": "traffic.primary_representation", "value": "packet"}
+}

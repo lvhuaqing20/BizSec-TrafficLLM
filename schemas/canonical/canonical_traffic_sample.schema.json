@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/canonical/canonical_traffic_sample.schema.json",
+  "title": "Canonical Traffic Sample v1",
+  "description": "Label-isolated, provenance-aware normalized traffic sample used before task-specific View construction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "canonical_version",
+    "sample_id",
+    "source",
+    "traffic",
+    "context",
+    "labels",
+    "quality"
+  ],
+  "properties": {
+    "canonical_version": {"const": "canonical-traffic-sample-v1"},
+    "sample_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Deterministic SHA-256 identifier; see configs/canonical/source_mapping_v1.json."
+    },
+    "source": {"$ref": "#/$defs/source"},
+    "traffic": {"$ref": "#/$defs/traffic"},
+    "context": {"$ref": "#/$defs/context"},
+    "labels": {
+      "oneOf": [
+        {"$ref": "#/$defs/labels"},
+        {"type": "null"}
+      ]
+    },
+    "quality": {"$ref": "#/$defs/quality"}
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_kind",
+        "dataset_id",
+        "split",
+        "source_file",
+        "record_index",
+        "source_format",
+        "source_record_sha256"
+      ],
+      "properties": {
+        "source_kind": {"type": "string", "enum": ["dataset", "live"]},
+        "dataset_id": {"type": ["string", "null"], "minLength": 1},
+        "split": {
+          "type": "string",
+          "enum": ["train", "validation", "test", "inference"]
+        },
+        "source_file": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "description": "Dataset-root-relative path only; absolute paths and parent traversal are forbidden."
+        },
+        "record_index": {"type": ["integer", "null"], "minimum": 0},
+        "source_format": {
+          "type": "string",
+          "enum": ["tshark_packet_text", "http_request_json", "direction_bit_sequence", "live_structured"]
+        },
+        "source_record_sha256": {
+          "oneOf": [
+            {"$ref": "#/$defs/sha256"},
+            {"type": "null"}
+          ]
+        }
+      }
+    },
+    "traffic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_representation", "representations", "statistics"],
+      "properties": {
+        "primary_representation": {
+          "type": "string",
+          "enum": ["packet", "http_request", "direction_sequence"]
+        },
+        "representations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["packet", "http_request", "direction_sequence"],
+          "properties": {
+            "packet": {
+              "oneOf": [
+                {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/packetRepresentation"},
+                {"type": "null"}
+              ]
+            },
+            "http_request": {
+              "oneOf": [
+                {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/httpRepresentation"},
+                {"type": "null"}
+              ]
+            },
+            "direction_sequence": {
+              "oneOf": [
+                {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/directionSequenceRepresentation"},
+                {"type": "null"}
+              ]
+            }
+          },
+          "anyOf": [
+            {"properties": {"packet": {"type": "object"}}},
+            {"properties": {"http_request": {"type": "object"}}},
+            {"properties": {"direction_sequence": {"type": "object"}}}
+          ]
+        },
+        "statistics": {
+          "$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/statistics"
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_type", "service_name"],
+      "properties": {
+        "asset_type": {"type": ["string", "null"], "minLength": 1},
+        "service_name": {"type": ["string", "null"], "minLength": 1}
+      }
+    },
+    "businessTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["business_domain", "business_type"],
+      "properties": {
+        "business_domain": {
+          "type": "string",
+          "enum": ["application", "website", "network_behavior", "unknown"]
+        },
+        "business_type": {"type": "string", "minLength": 1}
+      }
+    },
+    "detectionTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_attack"],
+      "properties": {
+        "is_attack": {"type": "boolean"}
+      }
+    },
+    "attackTypeTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attack_type", "attack_family"],
+      "properties": {
+        "attack_type": {"type": "string", "minLength": 1, "not": {"const": "benign"}},
+        "attack_family": {"type": ["string", "null"], "minLength": 1}
+      }
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw", "eligible_tasks", "targets", "mapping"],
+      "properties": {
+        "raw": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "normalized_value"],
+          "properties": {
+            "value": {"type": "string"},
+            "normalized_value": {"type": "string"}
+          }
+        },
+        "eligible_tasks": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["business", "detection", "attack_type"]},
+          "uniqueItems": true
+        },
+        "targets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["business", "detection", "attack_type"],
+          "properties": {
+            "business": {
+              "oneOf": [{"$ref": "#/$defs/businessTarget"}, {"type": "null"}]
+            },
+            "detection": {
+              "oneOf": [{"$ref": "#/$defs/detectionTarget"}, {"type": "null"}]
+            },
+            "attack_type": {
+              "oneOf": [{"$ref": "#/$defs/attackTypeTarget"}, {"type": "null"}]
+            }
+          }
+        },
+        "mapping": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["registry_version", "mapping_basis", "review_required"],
+          "properties": {
+            "registry_version": {"const": "label-registry-v1"},
+            "mapping_basis": {"type": "string", "minLength": 1},
+            "review_required": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parse_status",
+        "available_representations",
+        "missing_fields",
+        "warnings",
+        "privacy"
+      ],
+      "properties": {
+        "parse_status": {"type": "string", "enum": ["ok", "partial"]},
+        "available_representations": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["packet", "http_request", "direction_sequence"]},
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "warnings": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "privacy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "contains_direct_identifiers", "transforms"],
+          "properties": {
+            "status": {"type": "string", "enum": ["applied", "not_required"]},
+            "contains_direct_identifiers": {"const": false},
+            "transforms": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1},
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

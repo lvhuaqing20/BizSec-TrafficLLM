@@ -1,0 +1,19 @@
+{
+  "validation_version": "phase3-canonical-validation-v1",
+  "status": "passed",
+  "schema_validation": "jsonschema Draft 2020-12 validation executed",
+  "checks": {
+    "dataset_mappings": 11,
+    "representation_detectors": 3,
+    "task_permission_profiles": 3,
+    "canonical_schemas": 1,
+    "schema_references_checked": 13,
+    "valid_fixtures": 4,
+    "valid_fixtures_accepted": 4,
+    "invalid_fixtures": 7,
+    "invalid_fixtures_rejected": 7,
+    "label_registry_datasets": 11,
+    "audited_source_records": 544381
+  },
+  "errors": []
+}

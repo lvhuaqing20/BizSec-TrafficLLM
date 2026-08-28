@@ -1,0 +1,14 @@
+{
+  "validation_version": "task-training-views-validation-v1",
+  "status": "passed",
+  "files": 66,
+  "counts": {
+    "attack_type": 102,
+    "business": 1456,
+    "detection": 186
+  },
+  "unique_sample_task_pairs": 1744,
+  "duplicate_sample_task_pairs": 0,
+  "combined_content_sha256": "19e69a5bfe74557c5720b41a5767cc2af668977ea51d0b27f5ae926aa608abbc",
+  "errors": []
+}

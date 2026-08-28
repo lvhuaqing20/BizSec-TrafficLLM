@@ -1,0 +1,51 @@
+{
+  "canonical_version": "canonical-traffic-sample-v1",
+  "sample_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "source": {
+    "source_kind": "live",
+    "dataset_id": null,
+    "split": "inference",
+    "source_file": null,
+    "record_index": null,
+    "source_format": "live_structured",
+    "source_record_sha256": null
+  },
+  "traffic": {
+    "primary_representation": "http_request",
+    "representations": {
+      "packet": {
+        "representation_type": "packet",
+        "protocols": ["eth", "ip", "tcp", "http"],
+        "direction": "inbound",
+        "packet_length": 512,
+        "network": {"ip_version": 4, "src_role": "external", "dst_role": "internal"},
+        "transport": {"protocol": "tcp", "src_port": 53000, "dst_port": 443, "tcp_flags": ["PSH", "ACK"]},
+        "tls": null,
+        "payload": {"length": 120, "encoding": "summary", "content": "HTTP request payload redacted"}
+      },
+      "http_request": {
+        "representation_type": "http_request",
+        "method": "GET",
+        "host": "shop.example",
+        "path": "/orders",
+        "query": "id=<ID>",
+        "body": null
+      },
+      "direction_sequence": null
+    },
+    "statistics": null
+  },
+  "context": {"asset_type": "web_application", "service_name": "order_service"},
+  "labels": null,
+  "quality": {
+    "parse_status": "ok",
+    "available_representations": ["packet", "http_request"],
+    "missing_fields": [],
+    "warnings": [],
+    "privacy": {
+      "status": "applied",
+      "contains_direct_identifiers": false,
+      "transforms": ["ip_to_role", "drop_mac", "redact_sensitive_http_values"]
+    }
+  }
+}

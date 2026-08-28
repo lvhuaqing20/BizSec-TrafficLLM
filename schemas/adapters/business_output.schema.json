@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/adapters/business_output.schema.json",
+  "title": "Business Adapter Output v1",
+  "description": "Shared schema for the Business Adapter training target and inference output.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["business_domain", "business_type"],
+  "properties": {
+    "business_domain": {
+      "type": "string",
+      "enum": ["application", "website", "network_behavior", "unknown"]
+    },
+    "business_type": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

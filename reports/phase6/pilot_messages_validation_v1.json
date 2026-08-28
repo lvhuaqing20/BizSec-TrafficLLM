@@ -1,0 +1,21 @@
+{
+  "validation_version": "training-messages-validation-v1",
+  "status": "passed",
+  "files": 66,
+  "limit_per_file": 5,
+  "counts": {
+    "attack_type": 50,
+    "business": 70,
+    "detection": 50
+  },
+  "unique_sample_task_pairs": 170,
+  "duplicate_sample_task_pairs": 0,
+  "combined_content_sha256": "f1c3116349cefa7f868ff89d77707ccbd92d45224e464fff6b32b06e92c66f05",
+  "checks": {
+    "message_schema": "passed",
+    "deterministic_source_equivalence": "passed",
+    "view_target_separation": "passed",
+    "train_test_path_preservation": "passed"
+  },
+  "errors": []
+}

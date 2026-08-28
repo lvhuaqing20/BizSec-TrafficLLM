@@ -1,0 +1,19 @@
+{
+  "config_version": "prompt-templates-v1",
+  "format": "chat_messages",
+  "content_serialization": "canonical-json-v1",
+  "tasks": {
+    "business": {
+      "template_version": "business-prompt-v1",
+      "system": "Classify the business represented by the network traffic. Return only one compact JSON object with exactly the keys business_domain and business_type. Do not add explanations or Markdown."
+    },
+    "detection": {
+      "template_version": "detection-prompt-v1",
+      "system": "Determine whether the network traffic is an attack. Use the business prior only when it is present. Return only one compact JSON object with exactly the key is_attack and a boolean value. Do not add explanations or Markdown."
+    },
+    "attack_type": {
+      "template_version": "attack-type-prompt-v1",
+      "system": "Classify the attack represented by the network traffic. The upstream gate has already selected this task, so do not perform attack detection. Return only one compact JSON object with exactly the keys attack_type and attack_family. Do not add explanations or Markdown."
+    }
+  }
+}

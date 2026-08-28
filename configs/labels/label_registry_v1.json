@@ -1,0 +1,6309 @@
+{
+  "registry_version": "label-registry-v1",
+  "task_contract_version": "task-contract-v1",
+  "generated_on": "2026-08-27",
+  "source_root": "/Users/odie/Documents/xm/TrafficLLM_Datasets",
+  "semantics": {
+    "null_target": "The source dataset does not provide valid supervision for this task.",
+    "unknown_is_not_benign": true
+  },
+  "datasets": {
+    "app53-2023": {
+      "task_name": "concept_drift_application_classification",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/app53-2023/app53-2023_label.json",
+      "label_file_sha256": "303680a9d542f6f38b17937101350b14275577ab2571cce7875b66a125c0e8fc",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "com.imo.android.imoim",
+          "normalized_label": "com.imo.android.imoim",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.imo.android.imoim"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.vidio.android",
+          "normalized_label": "com.vidio.android",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.vidio.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.tripadvisor.tripadvisor",
+          "normalized_label": "com.tripadvisor.tripadvisor",
+          "original_id": 2,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.tripadvisor.tripadvisor"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.spotify.music",
+          "normalized_label": "com.spotify.music",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.spotify.music"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.shpock.android",
+          "normalized_label": "com.shpock.android",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.shpock.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.taobao.taobao",
+          "normalized_label": "com.taobao.taobao",
+          "original_id": 5,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.taobao.taobao"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.kakao.talk",
+          "normalized_label": "com.kakao.talk",
+          "original_id": 6,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.kakao.talk"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.sina.weibo",
+          "normalized_label": "com.sina.weibo",
+          "original_id": 7,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.sina.weibo"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.google.android.youtube",
+          "normalized_label": "com.google.android.youtube",
+          "original_id": 8,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.google.android.youtube"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.pinterest",
+          "normalized_label": "com.pinterest",
+          "original_id": 9,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.pinterest"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.ideashower.readitlater.pro",
+          "normalized_label": "com.ideashower.readitlater.pro",
+          "original_id": 10,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.ideashower.readitlater.pro"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.cnn.mobile.android.phone",
+          "normalized_label": "com.cnn.mobile.android.phone",
+          "original_id": 11,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.cnn.mobile.android.phone"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.lenovo.anyshare.gps",
+          "normalized_label": "com.lenovo.anyshare.gps",
+          "original_id": 12,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.lenovo.anyshare.gps"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.badoo.mobile",
+          "normalized_label": "com.badoo.mobile",
+          "original_id": 13,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.badoo.mobile"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.flipkart.android",
+          "normalized_label": "com.flipkart.android",
+          "original_id": 14,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.flipkart.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "bbc.mobile.weather",
+          "normalized_label": "bbc.mobile.weather",
+          "original_id": 15,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "bbc.mobile.weather"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.nytimes.android",
+          "normalized_label": "com.nytimes.android",
+          "original_id": 16,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.nytimes.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ru.ideast.championat",
+          "normalized_label": "ru.ideast.championat",
+          "original_id": 17,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "ru.ideast.championat"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.particlenews.newsbreak",
+          "normalized_label": "com.particlenews.newsbreak",
+          "original_id": 18,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.particlenews.newsbreak"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.amazon.mShop.android.shopping",
+          "normalized_label": "com.amazon.mShop.android.shopping",
+          "original_id": 19,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.amazon.mShop.android.shopping"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "info.androidz.horoscope",
+          "normalized_label": "info.androidz.horoscope",
+          "original_id": 20,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "info.androidz.horoscope"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.groupon",
+          "normalized_label": "com.groupon",
+          "original_id": 21,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.groupon"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.facebook.katana",
+          "normalized_label": "com.facebook.katana",
+          "original_id": 22,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.facebook.katana"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "sg.bigo.live",
+          "normalized_label": "sg.bigo.live",
+          "original_id": 23,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "sg.bigo.live"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.imdb.mobile",
+          "normalized_label": "com.imdb.mobile",
+          "original_id": 24,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.imdb.mobile"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.twitter.android",
+          "normalized_label": "com.twitter.android",
+          "original_id": 25,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.twitter.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.instagram.android",
+          "normalized_label": "com.instagram.android",
+          "original_id": 26,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.instagram.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.tencent.qqlivei18n",
+          "normalized_label": "com.tencent.qqlivei18n",
+          "original_id": 27,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.tencent.qqlivei18n"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.skype.raider",
+          "normalized_label": "com.skype.raider",
+          "original_id": 28,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.skype.raider"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "air.ITVMobilePlayer",
+          "normalized_label": "air.ITVMobilePlayer",
+          "original_id": 29,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "air.ITVMobilePlayer"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.dropbox.android",
+          "normalized_label": "com.dropbox.android",
+          "original_id": 30,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.dropbox.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.jingdong.app.mall",
+          "normalized_label": "com.jingdong.app.mall",
+          "original_id": 31,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.jingdong.app.mall"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.vkontakte.android",
+          "normalized_label": "com.vkontakte.android",
+          "original_id": 32,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.vkontakte.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "cn.cntv",
+          "normalized_label": "cn.cntv",
+          "original_id": 33,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "cn.cntv"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.shazam.android",
+          "normalized_label": "com.shazam.android",
+          "original_id": 34,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.shazam.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "uk.co.nationalrail.google",
+          "normalized_label": "uk.co.nationalrail.google",
+          "original_id": 35,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "uk.co.nationalrail.google"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "kik.android",
+          "normalized_label": "kik.android",
+          "original_id": 36,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "kik.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.soundcloud.android",
+          "normalized_label": "com.soundcloud.android",
+          "original_id": 37,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.soundcloud.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.iconology.comics",
+          "normalized_label": "com.iconology.comics",
+          "original_id": 38,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.iconology.comics"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.gumtree.android",
+          "normalized_label": "com.gumtree.android",
+          "original_id": 39,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.gumtree.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.reddit.frontpage",
+          "normalized_label": "com.reddit.frontpage",
+          "original_id": 40,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.reddit.frontpage"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.google.android.gm",
+          "normalized_label": "com.google.android.gm",
+          "original_id": 41,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.google.android.gm"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "tv.danmaku.bili",
+          "normalized_label": "tv.danmaku.bili",
+          "original_id": 42,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "tv.danmaku.bili"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.contextlogic.wish",
+          "normalized_label": "com.contextlogic.wish",
+          "original_id": 43,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.contextlogic.wish"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.ted.android",
+          "normalized_label": "com.ted.android",
+          "original_id": 44,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.ted.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.guardian",
+          "normalized_label": "com.guardian",
+          "original_id": 45,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.guardian"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.xunmeng.pinduoduo",
+          "normalized_label": "com.xunmeng.pinduoduo",
+          "original_id": 46,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.xunmeng.pinduoduo"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.amazon.kindle",
+          "normalized_label": "com.amazon.kindle",
+          "original_id": 47,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.amazon.kindle"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.ss.android.ugc.aweme",
+          "normalized_label": "com.ss.android.ugc.aweme",
+          "original_id": 48,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.ss.android.ugc.aweme"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.joelapenna.foursquared",
+          "normalized_label": "com.joelapenna.foursquared",
+          "original_id": 49,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.joelapenna.foursquared"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "flipboard.app",
+          "normalized_label": "flipboard.app",
+          "original_id": 50,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "flipboard.app"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.snapchat.android",
+          "normalized_label": "com.snapchat.android",
+          "original_id": 51,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.snapchat.android"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "tv.twitch.android.app",
+          "normalized_label": "tv.twitch.android.app",
+          "original_id": 52,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "tv.twitch.android.app"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com.booking",
+          "normalized_label": "com.booking",
+          "original_id": 53,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "com.booking"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "csic-2010": {
+      "task_name": "web_attack_detection",
+      "input_format": "http_request_json",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/csic-2010/csic-2010_label.json",
+      "label_file_sha256": "5d460c9fd814f105ec98e9177d85caffe3c5d5e36b9eb69bd1fa82123d173459",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "benign",
+          "normalized_label": "benign",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "malicious",
+          "normalized_label": "malicious",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "web_attack",
+              "attack_family": null
+            }
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "cstnet-2023": {
+      "task_name": "encrypted_application_classification",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/cstnet-2023/cstnet-2023_label.json",
+      "label_file_sha256": "7d092f27473c6fce647d6365b0b8cd38fe51bb069ef4fb2d53ae512023fd5ed8",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "Alicdn",
+          "normalized_label": "Alicdn",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Alicdn"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "AzureEdge",
+          "normalized_label": "AzureEdge",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "AzureEdge"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Acm",
+          "normalized_label": "Acm",
+          "original_id": 2,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Acm"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Adobe",
+          "normalized_label": "Adobe",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Adobe"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Apple",
+          "normalized_label": "Apple",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Apple"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "LA",
+          "normalized_label": "LA",
+          "original_id": 5,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "LA"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Atlassian",
+          "normalized_label": "Atlassian",
+          "original_id": 6,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Atlassian"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "AmazonAWS",
+          "normalized_label": "AmazonAWS",
+          "original_id": 7,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "AmazonAWS"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Booking",
+          "normalized_label": "Booking",
+          "original_id": 8,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Booking"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Biligame",
+          "normalized_label": "Biligame",
+          "original_id": 9,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Biligame"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Arxiv",
+          "normalized_label": "Arxiv",
+          "original_id": 10,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Arxiv"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "163Mail",
+          "normalized_label": "163Mail",
+          "original_id": 11,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "163Mail"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Alibaba",
+          "normalized_label": "Alibaba",
+          "original_id": 12,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Alibaba"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Asus",
+          "normalized_label": "Asus",
+          "original_id": 13,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Asus"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "51cto",
+          "normalized_label": "51cto",
+          "original_id": 14,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "51cto"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Alipay",
+          "normalized_label": "Alipay",
+          "original_id": 15,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Alipay"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Baidu",
+          "normalized_label": "Baidu",
+          "original_id": 16,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Baidu"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Amap",
+          "normalized_label": "Amap",
+          "original_id": 17,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Amap"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "AmpProject",
+          "normalized_label": "AmpProject",
+          "original_id": 18,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "AmpProject"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Bilibili",
+          "normalized_label": "Bilibili",
+          "original_id": 19,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Bilibili"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "cw100-2018": {
+      "task_name": "website_fingerprinting",
+      "input_format": "direction_bit_sequence",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/cw100-2018-2024/cw100-2018_label.json",
+      "label_file_sha256": "7bb82cdc6812071c127e398d605830f27fc33716753c0f757fdf2c2e4e6da9d5",
+      "output_normalization": {
+        "strip_whitespace": true,
+        "strip_suffixes": [
+          "。"
+        ]
+      },
+      "labels": [
+        {
+          "raw_label": "aol.com",
+          "normalized_label": "aol.com",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "aol.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "varzesh3.com",
+          "normalized_label": "varzesh3.com",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "varzesh3.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "twitch.tv",
+          "normalized_label": "twitch.tv",
+          "original_id": 2,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "twitch.tv"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "redtube.com",
+          "normalized_label": "redtube.com",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "redtube.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "hotstar.com",
+          "normalized_label": "hotstar.com",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "hotstar.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "rolloid.net",
+          "normalized_label": "rolloid.net",
+          "original_id": 5,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "rolloid.net"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "espncricinfo.com",
+          "normalized_label": "espncricinfo.com",
+          "original_id": 6,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "espncricinfo.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "webtretho.com",
+          "normalized_label": "webtretho.com",
+          "original_id": 7,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "webtretho.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "tistory.com",
+          "normalized_label": "tistory.com",
+          "original_id": 8,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "tistory.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "thesaurus.com",
+          "normalized_label": "thesaurus.com",
+          "original_id": 9,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "thesaurus.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "bukalapak.com",
+          "normalized_label": "bukalapak.com",
+          "original_id": 10,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "bukalapak.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "hatena.ne.jp",
+          "normalized_label": "hatena.ne.jp",
+          "original_id": 11,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "hatena.ne.jp"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ltn.com.tw",
+          "normalized_label": "ltn.com.tw",
+          "original_id": 12,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "ltn.com.tw"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "w3schools.com",
+          "normalized_label": "w3schools.com",
+          "original_id": 13,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "w3schools.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "slack.com",
+          "normalized_label": "slack.com",
+          "original_id": 14,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "slack.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "sharepoint.com",
+          "normalized_label": "sharepoint.com",
+          "original_id": 15,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "sharepoint.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "amazon.com",
+          "normalized_label": "amazon.com",
+          "original_id": 16,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "amazon.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wikihow.com",
+          "normalized_label": "wikihow.com",
+          "original_id": 17,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wikihow.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "dailymotion.com",
+          "normalized_label": "dailymotion.com",
+          "original_id": 18,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "dailymotion.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "hclips.com",
+          "normalized_label": "hclips.com",
+          "original_id": 19,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "hclips.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "orange.fr",
+          "normalized_label": "orange.fr",
+          "original_id": 20,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "orange.fr"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "pinterest.com",
+          "normalized_label": "pinterest.com",
+          "original_id": 21,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "pinterest.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "microsoft.com",
+          "normalized_label": "microsoft.com",
+          "original_id": 22,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "microsoft.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "msn.com",
+          "normalized_label": "msn.com",
+          "original_id": 23,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "msn.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "messenger.com",
+          "normalized_label": "messenger.com",
+          "original_id": 24,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "messenger.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "blastingnews.com",
+          "normalized_label": "blastingnews.com",
+          "original_id": 25,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "blastingnews.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "blackboard.com",
+          "normalized_label": "blackboard.com",
+          "original_id": 26,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "blackboard.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ebay.com",
+          "normalized_label": "ebay.com",
+          "original_id": 27,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "ebay.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wikimedia.org",
+          "normalized_label": "wikimedia.org",
+          "original_id": 28,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wikimedia.org"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "vice.com",
+          "normalized_label": "vice.com",
+          "original_id": 29,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "vice.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "goo.ne.jp",
+          "normalized_label": "goo.ne.jp",
+          "original_id": 30,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "goo.ne.jp"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "softonic.com",
+          "normalized_label": "softonic.com",
+          "original_id": 31,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "softonic.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "reimageplus.com",
+          "normalized_label": "reimageplus.com",
+          "original_id": 32,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "reimageplus.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "sabah.com.tr",
+          "normalized_label": "sabah.com.tr",
+          "original_id": 33,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "sabah.com.tr"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "stackexchange.com",
+          "normalized_label": "stackexchange.com",
+          "original_id": 34,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "stackexchange.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "salesforce.com",
+          "normalized_label": "salesforce.com",
+          "original_id": 35,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "salesforce.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "weebly.com",
+          "normalized_label": "weebly.com",
+          "original_id": 36,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "weebly.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ask.com",
+          "normalized_label": "ask.com",
+          "original_id": 37,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "ask.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wikipedia.org",
+          "normalized_label": "wikipedia.org",
+          "original_id": 38,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wikipedia.org"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "spotify.com",
+          "normalized_label": "spotify.com",
+          "original_id": 39,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "spotify.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "youm7.com",
+          "normalized_label": "youm7.com",
+          "original_id": 40,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "youm7.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ikea.com",
+          "normalized_label": "ikea.com",
+          "original_id": 41,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "ikea.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "popcash.net",
+          "normalized_label": "popcash.net",
+          "original_id": 42,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "popcash.net"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "gfycat.com",
+          "normalized_label": "gfycat.com",
+          "original_id": 43,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "gfycat.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "leboncoin.fr",
+          "normalized_label": "leboncoin.fr",
+          "original_id": 44,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "leboncoin.fr"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "bbc.co.uk",
+          "normalized_label": "bbc.co.uk",
+          "original_id": 45,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "bbc.co.uk"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wix.com",
+          "normalized_label": "wix.com",
+          "original_id": 46,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wix.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "shutterstock.com",
+          "normalized_label": "shutterstock.com",
+          "original_id": 47,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "shutterstock.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "adobe.com",
+          "normalized_label": "adobe.com",
+          "original_id": 48,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "adobe.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "cnn.com",
+          "normalized_label": "cnn.com",
+          "original_id": 49,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "cnn.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "onlinesbi.com",
+          "normalized_label": "onlinesbi.com",
+          "original_id": 50,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "onlinesbi.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "netflix.com",
+          "normalized_label": "netflix.com",
+          "original_id": 51,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "netflix.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "office.com",
+          "normalized_label": "office.com",
+          "original_id": 52,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "office.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ouo.io",
+          "normalized_label": "ouo.io",
+          "original_id": 53,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "ouo.io"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "youtube-mp3.org",
+          "normalized_label": "youtube-mp3.org",
+          "original_id": 54,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "youtube-mp3.org"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "aliexpress.com",
+          "normalized_label": "aliexpress.com",
+          "original_id": 55,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "aliexpress.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "yelp.com",
+          "normalized_label": "yelp.com",
+          "original_id": 56,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "yelp.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "tripadvisor.com",
+          "normalized_label": "tripadvisor.com",
+          "original_id": 57,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "tripadvisor.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "skype.com",
+          "normalized_label": "skype.com",
+          "original_id": 58,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "skype.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "github.com",
+          "normalized_label": "github.com",
+          "original_id": 59,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "github.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "kakaku.com",
+          "normalized_label": "kakaku.com",
+          "original_id": 60,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "kakaku.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "mozilla.org",
+          "normalized_label": "mozilla.org",
+          "original_id": 61,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "mozilla.org"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "kompas.com",
+          "normalized_label": "kompas.com",
+          "original_id": 62,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "kompas.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "digikala.com",
+          "normalized_label": "digikala.com",
+          "original_id": 63,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "digikala.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "intuit.com",
+          "normalized_label": "intuit.com",
+          "original_id": 64,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "intuit.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "pandora.com",
+          "normalized_label": "pandora.com",
+          "original_id": 65,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "pandora.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "myway.com",
+          "normalized_label": "myway.com",
+          "original_id": 66,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "myway.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "providr.com",
+          "normalized_label": "providr.com",
+          "original_id": 67,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "providr.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "roblox.com",
+          "normalized_label": "roblox.com",
+          "original_id": 68,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "roblox.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "openload.co",
+          "normalized_label": "openload.co",
+          "original_id": 69,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "openload.co"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "quora.com",
+          "normalized_label": "quora.com",
+          "original_id": 70,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "quora.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "buzzfeed.com",
+          "normalized_label": "buzzfeed.com",
+          "original_id": 71,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "buzzfeed.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "jd.com",
+          "normalized_label": "jd.com",
+          "original_id": 72,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "jd.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "gmx.net",
+          "normalized_label": "gmx.net",
+          "original_id": 73,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "gmx.net"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wordreference.com",
+          "normalized_label": "wordreference.com",
+          "original_id": 74,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wordreference.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "seasonvar.ru",
+          "normalized_label": "seasonvar.ru",
+          "original_id": 75,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "seasonvar.ru"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "subscene.com",
+          "normalized_label": "subscene.com",
+          "original_id": 76,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "subscene.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ameblo.jp",
+          "normalized_label": "ameblo.jp",
+          "original_id": 77,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "ameblo.jp"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "steamcommunity.com",
+          "normalized_label": "steamcommunity.com",
+          "original_id": 78,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "steamcommunity.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "theguardian.com",
+          "normalized_label": "theguardian.com",
+          "original_id": 79,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "theguardian.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wikia.com",
+          "normalized_label": "wikia.com",
+          "original_id": 80,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wikia.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "businessinsider.com",
+          "normalized_label": "businessinsider.com",
+          "original_id": 81,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "businessinsider.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "hola.com",
+          "normalized_label": "hola.com",
+          "original_id": 82,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "hola.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "zippyshare.com",
+          "normalized_label": "zippyshare.com",
+          "original_id": 83,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "zippyshare.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "flipkart.com",
+          "normalized_label": "flipkart.com",
+          "original_id": 84,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "flipkart.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "daum.net",
+          "normalized_label": "daum.net",
+          "original_id": 85,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "daum.net"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "dictionary.com",
+          "normalized_label": "dictionary.com",
+          "original_id": 86,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "dictionary.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "popads.net",
+          "normalized_label": "popads.net",
+          "original_id": 87,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "popads.net"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "nytimes.com",
+          "normalized_label": "nytimes.com",
+          "original_id": 88,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "nytimes.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "avito.ru",
+          "normalized_label": "avito.ru",
+          "original_id": 89,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "avito.ru"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "force.com",
+          "normalized_label": "force.com",
+          "original_id": 90,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "force.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "oracle.com",
+          "normalized_label": "oracle.com",
+          "original_id": 91,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "oracle.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "ok.ru",
+          "normalized_label": "ok.ru",
+          "original_id": 92,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "ok.ru"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "doubleclick.net",
+          "normalized_label": "doubleclick.net",
+          "original_id": 93,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "doubleclick.net"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "slideshare.net",
+          "normalized_label": "slideshare.net",
+          "original_id": 94,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "slideshare.net"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "feedly.com",
+          "normalized_label": "feedly.com",
+          "original_id": 95,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "feedly.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "naver.com",
+          "normalized_label": "naver.com",
+          "original_id": 96,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "naver.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "rambler.ru",
+          "normalized_label": "rambler.ru",
+          "original_id": 97,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "rambler.ru"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "godaddy.com",
+          "normalized_label": "godaddy.com",
+          "original_id": 98,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "godaddy.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "yahoo.com",
+          "normalized_label": "yahoo.com",
+          "original_id": 99,
+          "observed_in_train": true,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "yahoo.com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "cw100-2024": {
+      "task_name": "website_fingerprinting",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/cw100-2018-2024/cw100-2024_label.json",
+      "label_file_sha256": "6cab1b1304f6756d36d37db1a115f67ea6aa6844c0c5495dda886ac20ca34814",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "xxxmovies",
+          "normalized_label": "xxxmovies",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "xxxmovies"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "edf",
+          "normalized_label": "edf",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "edf"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "gov",
+          "normalized_label": "gov",
+          "original_id": 2,
+          "observed_in_train": false,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "gov"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "blackmagicdesign",
+          "normalized_label": "blackmagicdesign",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "blackmagicdesign"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "nj",
+          "normalized_label": "nj",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "nj"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "tiktok",
+          "normalized_label": "tiktok",
+          "original_id": 5,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "tiktok"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "fr",
+          "normalized_label": "fr",
+          "original_id": 6,
+          "observed_in_train": false,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "fr"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "sc",
+          "normalized_label": "sc",
+          "original_id": 7,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "sc"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "joomshaper",
+          "normalized_label": "joomshaper",
+          "original_id": 8,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "joomshaper"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wizards",
+          "normalized_label": "wizards",
+          "original_id": 9,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wizards"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "gekosport",
+          "normalized_label": "gekosport",
+          "original_id": 10,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "gekosport"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "hentaicomics",
+          "normalized_label": "hentaicomics",
+          "original_id": 11,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "hentaicomics"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "leagueoflegends",
+          "normalized_label": "leagueoflegends",
+          "original_id": 12,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "leagueoflegends"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "sima-land",
+          "normalized_label": "sima-land",
+          "original_id": 13,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "sima-land"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "dhlparcel",
+          "normalized_label": "dhlparcel",
+          "original_id": 14,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "dhlparcel"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "webassign",
+          "normalized_label": "webassign",
+          "original_id": 15,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "webassign"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "com",
+          "normalized_label": "com",
+          "original_id": 16,
+          "observed_in_train": false,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "com"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "edu",
+          "normalized_label": "edu",
+          "original_id": 17,
+          "observed_in_train": false,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "edu"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "oecd-ilibrary",
+          "normalized_label": "oecd-ilibrary",
+          "original_id": 18,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "oecd-ilibrary"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "rit",
+          "normalized_label": "rit",
+          "original_id": 19,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "rit"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "purdue",
+          "normalized_label": "purdue",
+          "original_id": 20,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "purdue"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "toomics",
+          "normalized_label": "toomics",
+          "original_id": 21,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "toomics"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "mashable",
+          "normalized_label": "mashable",
+          "original_id": 22,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "mashable"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "thetrainline",
+          "normalized_label": "thetrainline",
+          "original_id": 23,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "thetrainline"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "milffox",
+          "normalized_label": "milffox",
+          "original_id": 24,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "milffox"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "lagged",
+          "normalized_label": "lagged",
+          "original_id": 25,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "lagged"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "skims",
+          "normalized_label": "skims",
+          "original_id": 26,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "skims"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "yeniemlak",
+          "normalized_label": "yeniemlak",
+          "original_id": 27,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "yeniemlak"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "kingarthurbaking",
+          "normalized_label": "kingarthurbaking",
+          "original_id": 28,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "kingarthurbaking"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "pussyspace",
+          "normalized_label": "pussyspace",
+          "original_id": 29,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "pussyspace"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "malaysiakini",
+          "normalized_label": "malaysiakini",
+          "original_id": 30,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "malaysiakini"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "weightwatchers",
+          "normalized_label": "weightwatchers",
+          "original_id": 31,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "weightwatchers"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "jp",
+          "normalized_label": "jp",
+          "original_id": 32,
+          "observed_in_train": false,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "jp"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "turtlebeach",
+          "normalized_label": "turtlebeach",
+          "original_id": 33,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "turtlebeach"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "nunude",
+          "normalized_label": "nunude",
+          "original_id": 34,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "nunude"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "iastate",
+          "normalized_label": "iastate",
+          "original_id": 35,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "iastate"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "radcom",
+          "normalized_label": "radcom",
+          "original_id": 36,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "radcom"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "sportschau",
+          "normalized_label": "sportschau",
+          "original_id": 37,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "sportschau"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "in",
+          "normalized_label": "in",
+          "original_id": 38,
+          "observed_in_train": false,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "in"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "linkedin",
+          "normalized_label": "linkedin",
+          "original_id": 39,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "linkedin"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "twitter",
+          "normalized_label": "twitter",
+          "original_id": 40,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "twitter"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "waldenu",
+          "normalized_label": "waldenu",
+          "original_id": 41,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "waldenu"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "cn",
+          "normalized_label": "cn",
+          "original_id": 42,
+          "observed_in_train": false,
+          "observed_in_test": false,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "cn"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "facebook",
+          "normalized_label": "facebook",
+          "original_id": 43,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "facebook"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "swissinfo",
+          "normalized_label": "swissinfo",
+          "original_id": 44,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "swissinfo"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "dollskill",
+          "normalized_label": "dollskill",
+          "original_id": 45,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "dollskill"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "codere",
+          "normalized_label": "codere",
+          "original_id": 46,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "codere"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "princeton",
+          "normalized_label": "princeton",
+          "original_id": 47,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "princeton"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "getsex",
+          "normalized_label": "getsex",
+          "original_id": 48,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "getsex"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "heute",
+          "normalized_label": "heute",
+          "original_id": 49,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "heute"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "fau",
+          "normalized_label": "fau",
+          "original_id": 50,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "fau"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "tporn",
+          "normalized_label": "tporn",
+          "original_id": 51,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "tporn"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "youtube",
+          "normalized_label": "youtube",
+          "original_id": 52,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "youtube"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "instagram",
+          "normalized_label": "instagram",
+          "original_id": 53,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "instagram"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "casadellibro",
+          "normalized_label": "casadellibro",
+          "original_id": 54,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "casadellibro"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "bungiestore",
+          "normalized_label": "bungiestore",
+          "original_id": 55,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "bungiestore"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "co",
+          "normalized_label": "co",
+          "original_id": 56,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "co"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "here",
+          "normalized_label": "here",
+          "original_id": 57,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "here"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "infomaniak",
+          "normalized_label": "infomaniak",
+          "original_id": 58,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "infomaniak"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "jamesedition",
+          "normalized_label": "jamesedition",
+          "original_id": 59,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "jamesedition"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wildberries",
+          "normalized_label": "wildberries",
+          "original_id": 60,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wildberries"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "manhwa18",
+          "normalized_label": "manhwa18",
+          "original_id": 61,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "manhwa18"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "wondershare",
+          "normalized_label": "wondershare",
+          "original_id": 62,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "website",
+              "business_type": "wondershare"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "dapt-2020": {
+      "task_name": "apt_detection",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/dapt-2020/dapt-2020_label.json",
+      "label_file_sha256": "d72982b9d693737ed2505e94020e5d37ae43e32270c2366d9c3e34387cc88d44",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "normal",
+          "normalized_label": "normal",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "APT",
+          "normalized_label": "APT",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "apt",
+              "attack_family": null
+            }
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "dohbrw-2020": {
+      "task_name": "malicious_doh_detection",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/dohbrw-2020/dohbrw-2020_label.json",
+      "label_file_sha256": "5d460c9fd814f105ec98e9177d85caffe3c5d5e36b9eb69bd1fa82123d173459",
+      "output_normalization": {
+        "strip_whitespace": true,
+        "aliases": {
+          "The traffic category is likely to be recognized as benign.": "benign",
+          "The traffic category is likely to be recognized as malicious.": "malicious"
+        }
+      },
+      "labels": [
+        {
+          "raw_label": "benign",
+          "normalized_label": "benign",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "malicious",
+          "normalized_label": "malicious",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malicious_doh",
+              "attack_family": null
+            }
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "iscx-botnet-2014": {
+      "task_name": "botnet_detection",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/iscx-botnet-2014/iscx-botnet_label.json",
+      "label_file_sha256": "3c3648adde6eda441504058ca1e415e2228fe87c26063fb36b4d2463995e6849",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "IRC",
+          "normalized_label": "IRC",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "botnet",
+              "attack_family": "IRC"
+            }
+          },
+          "mapping_basis": "dataset_semantics_review_required",
+          "review_required": true,
+          "notes": [
+            "IRC is treated as attack by dataset-level botnet semantics; confirm desired production taxonomy."
+          ]
+        },
+        {
+          "raw_label": "normal",
+          "normalized_label": "normal",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Virut",
+          "normalized_label": "Virut",
+          "original_id": 2,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "botnet",
+              "attack_family": "Virut"
+            }
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Neris",
+          "normalized_label": "Neris",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "botnet",
+              "attack_family": "Neris"
+            }
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "RBot",
+          "normalized_label": "RBot",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "botnet",
+              "attack_family": "RBot"
+            }
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "iscx-tor-2016": {
+      "task_name": "tor_behavior_classification",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/iscx-tor-2016/iscx-tor-2016_label.json",
+      "label_file_sha256": "f6d052b26907e23274ba6351927be6e688c62263d6a6473ef3aea01b39500edf",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "browsing",
+          "normalized_label": "browsing",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "browsing"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "file",
+          "normalized_label": "file",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "file"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "voip",
+          "normalized_label": "voip",
+          "original_id": 2,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "voip"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "audio",
+          "normalized_label": "audio",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "audio"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "chat",
+          "normalized_label": "chat",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "chat"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "mail",
+          "normalized_label": "mail",
+          "original_id": 5,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "mail"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "p2p",
+          "normalized_label": "p2p",
+          "original_id": 6,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "p2p"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "video",
+          "normalized_label": "video",
+          "original_id": 7,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "network_behavior",
+              "business_type": "video"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "iscx-vpn-2016": {
+      "task_name": "vpn_application_classification",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/iscx-vpn-2016/iscx-vpn-2016_label.json",
+      "label_file_sha256": "69a9718d5ffa4bf8d828d853b962ce910792bba4138d09da380360ebfa09e34a",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "ftps",
+          "normalized_label": "ftps",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "ftps"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "bittorrent",
+          "normalized_label": "bittorrent",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "bittorrent"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "spotify",
+          "normalized_label": "spotify",
+          "original_id": 2,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "spotify"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "vimeo",
+          "normalized_label": "vimeo",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "vimeo"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "hangout",
+          "normalized_label": "hangout",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "hangout"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "sftp",
+          "normalized_label": "sftp",
+          "original_id": 5,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "sftp"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "youtube",
+          "normalized_label": "youtube",
+          "original_id": 6,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "youtube"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "icq",
+          "normalized_label": "icq",
+          "original_id": 7,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "icq"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "netflix",
+          "normalized_label": "netflix",
+          "original_id": 8,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "netflix"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "facebook",
+          "normalized_label": "facebook",
+          "original_id": 9,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "facebook"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "skype",
+          "normalized_label": "skype",
+          "original_id": 10,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "skype"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "voipbuster",
+          "normalized_label": "voipbuster",
+          "original_id": 11,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "voipbuster"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "email",
+          "normalized_label": "email",
+          "original_id": 12,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "email"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "aim",
+          "normalized_label": "aim",
+          "original_id": 13,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "aim"
+            },
+            "detection": null,
+            "attack_type": null
+          },
+          "mapping_basis": "direct_task_semantics",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    },
+    "ustc-tfc-2016": {
+      "task_name": "malware_and_application_classification",
+      "input_format": "tshark_packet_text",
+      "label_file": "/Users/odie/Documents/xm/TrafficLLM_Datasets/ustc-tfc-2016/ustc-tfc-2016_label.json",
+      "label_file_sha256": "5f4d60e652fca48f2c0e375c4a28ef3bfb8cdb6d2d45ef0b615b3d43c0430ce6",
+      "output_normalization": {
+        "strip_whitespace": true
+      },
+      "labels": [
+        {
+          "raw_label": "Geodo",
+          "normalized_label": "Geodo",
+          "original_id": 0,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Geodo"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Cridex",
+          "normalized_label": "Cridex",
+          "original_id": 1,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Cridex"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Tinba",
+          "normalized_label": "Tinba",
+          "original_id": 2,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Tinba"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Shifu",
+          "normalized_label": "Shifu",
+          "original_id": 3,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Shifu"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Gmail",
+          "normalized_label": "Gmail",
+          "original_id": 4,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Gmail"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "SMB",
+          "normalized_label": "SMB",
+          "original_id": 5,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "SMB"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Weibo",
+          "normalized_label": "Weibo",
+          "original_id": 6,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Weibo"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "WorldOfWarcraft",
+          "normalized_label": "WorldOfWarcraft",
+          "original_id": 7,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "WorldOfWarcraft"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Zeus",
+          "normalized_label": "Zeus",
+          "original_id": 8,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Zeus"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "FTP",
+          "normalized_label": "FTP",
+          "original_id": 9,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "FTP"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "MySQL",
+          "normalized_label": "MySQL",
+          "original_id": 10,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "MySQL"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "BitTorrent",
+          "normalized_label": "BitTorrent",
+          "original_id": 11,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "BitTorrent"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Skype",
+          "normalized_label": "Skype",
+          "original_id": 12,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Skype"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Miuref",
+          "normalized_label": "Miuref",
+          "original_id": 13,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Miuref"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Htbot",
+          "normalized_label": "Htbot",
+          "original_id": 14,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Htbot"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Outlook",
+          "normalized_label": "Outlook",
+          "original_id": 15,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Outlook"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Facetime",
+          "normalized_label": "Facetime",
+          "original_id": 16,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "business",
+            "detection"
+          ],
+          "targets": {
+            "business": {
+              "business_domain": "application",
+              "business_type": "Facetime"
+            },
+            "detection": {
+              "is_attack": false
+            },
+            "attack_type": null
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Virut",
+          "normalized_label": "Virut",
+          "original_id": 17,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Virut"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Nsis-ay",
+          "normalized_label": "Nsis-ay",
+          "original_id": 18,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Nsis-ay"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        },
+        {
+          "raw_label": "Neris",
+          "normalized_label": "Neris",
+          "original_id": 19,
+          "observed_in_train": true,
+          "observed_in_test": true,
+          "eligible_tasks": [
+            "detection",
+            "attack_type"
+          ],
+          "targets": {
+            "business": null,
+            "detection": {
+              "is_attack": true
+            },
+            "attack_type": {
+              "attack_type": "malware",
+              "attack_family": "Neris"
+            }
+          },
+          "mapping_basis": "published_benign_malware_partition",
+          "review_required": false,
+          "notes": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/training/task_example.schema.json",
+  "title": "Task Training Example v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["example_version", "sample_id", "task", "view", "target"],
+  "properties": {
+    "example_version": {"const": "task-training-example-v1"},
+    "sample_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "task": {"type": "string", "enum": ["business", "detection", "attack_type"]},
+    "view": {"type": "object"},
+    "target": {"type": "object"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"task": {"const": "business"}}},
+      "then": {
+        "properties": {
+          "view": {"$ref": "https://bizsec.local/schemas/views/business_view.schema.json"},
+          "target": {"$ref": "https://bizsec.local/schemas/adapters/business_output.schema.json"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"task": {"const": "detection"}}},
+      "then": {
+        "properties": {
+          "view": {"$ref": "https://bizsec.local/schemas/views/detection_view.schema.json"},
+          "target": {"$ref": "https://bizsec.local/schemas/adapters/detection_output.schema.json"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"task": {"const": "attack_type"}}},
+      "then": {
+        "properties": {
+          "view": {"$ref": "https://bizsec.local/schemas/views/attack_type_view.schema.json"},
+          "target": {"$ref": "https://bizsec.local/schemas/adapters/attack_type_output.schema.json"}
+        }
+      }
+    }
+  ]
+}

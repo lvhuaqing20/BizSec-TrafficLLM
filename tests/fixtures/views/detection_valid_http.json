@@ -1,0 +1,20 @@
+{
+  "view_version": "detection-view-v1",
+  "task": "attack_detection",
+  "sample_id": "sample-detection-http-001",
+  "granularity": "request",
+  "traffic": {
+    "representation": {
+      "representation_type": "http_request",
+      "method": "POST",
+      "host": "shop.example.com",
+      "path": "/tienda1/publico/pagar.jsp",
+      "query": null,
+      "body": "modo=insertar&precio=4014"
+    },
+    "statistics": null
+  },
+  "context": {"security": {"rule_hits": [], "threat_intel_hit": null}},
+  "priors": {"business": {"business_domain": "application", "business_type": "web_service"}},
+  "quality": {"parse_status": "ok", "source_representation": "http_request", "missing_fields": [], "warnings": []}
+}

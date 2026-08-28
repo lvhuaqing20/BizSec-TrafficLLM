@@ -1,0 +1,17 @@
+{
+  "validation_version": "chatglm2-training-contract-validation-v1",
+  "status": "passed",
+  "model_contract": "chatglm2-6b-ptuning-v2-v1",
+  "tasks": [
+    "business",
+    "detection",
+    "attack_type"
+  ],
+  "checks": {
+    "model_schema": "passed",
+    "task_config_schema": "passed",
+    "task_path_consistency": "passed",
+    "checkpoint_isolation": "passed"
+  },
+  "errors": []
+}

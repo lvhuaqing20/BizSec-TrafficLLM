@@ -1,0 +1,22 @@
+{
+  "view_version": "business-view-v1",
+  "task": "business_classification",
+  "sample_id": "sample-business-packet-001",
+  "granularity": "packet",
+  "traffic": {
+    "representation": {
+      "representation_type": "packet",
+      "protocols": ["ipv4", "tcp", "tls"],
+      "direction": "outbound",
+      "packet_length": 1514,
+      "network": {"ip_version": 4, "src_role": "internal", "dst_role": "external"},
+      "transport": {"protocol": "tcp", "src_port": 52100, "dst_port": 443, "tcp_flags": ["PSH", "ACK"]},
+      "tls": {"sni": "video.example.com", "alpn": "h2", "version": "TLS1.3"},
+      "payload": {"length": 1460, "encoding": "none", "content": null}
+    },
+    "statistics": null
+  },
+  "context": {"asset_type": null, "service_name": null},
+  "priors": {},
+  "quality": {"parse_status": "ok", "source_representation": "packet", "missing_fields": [], "warnings": []}
+}

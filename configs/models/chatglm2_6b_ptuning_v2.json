@@ -1,0 +1,31 @@
+{
+  "contract_version": "chatglm2-6b-ptuning-v2-v1",
+  "model_id": "THUDM/chatglm2-6b",
+  "revision": "main",
+  "tokenizer_id": "THUDM/chatglm2-6b",
+  "tokenizer_revision": "main",
+  "trust_remote_code": true,
+  "model_loader": "AutoModel",
+  "tokenizer_loader": "AutoTokenizer",
+  "dtype": "float16",
+  "tuning": {
+    "method": "p_tuning_v2",
+    "pre_seq_len": 128,
+    "prefix_projection": false,
+    "base_model_trainable": false,
+    "prefix_encoder_trainable": true,
+    "embedding_trainable": false,
+    "lm_head_trainable": false
+  },
+  "prompt": {
+    "builder": "tokenizer.build_prompt",
+    "query_format": "{system}\n\nTraffic view:\n{user}",
+    "history": null,
+    "loss": "assistant_only"
+  },
+  "reproducibility": {
+    "resolve_revision_to_commit_before_full_training": true,
+    "save_resolved_model_commit_in_run_manifest": true,
+    "save_tokenizer_fingerprint_in_run_manifest": true
+  }
+}

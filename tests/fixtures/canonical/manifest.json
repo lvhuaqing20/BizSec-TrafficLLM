@@ -1,0 +1,18 @@
+{
+  "manifest_version": "canonical-fixtures-v1",
+  "valid": [
+    {"file": "valid/packet_business.json"},
+    {"file": "valid/http_detection.json"},
+    {"file": "valid/direction_business.json"},
+    {"file": "valid/live_multi_representation.json"}
+  ],
+  "invalid": [
+    {"file": "invalid/sample_id_mismatch.json", "expected_issue": "sample_id"},
+    {"file": "invalid/no_representation.json", "expected_issue": "schema"},
+    {"file": "invalid/primary_representation_missing.json", "expected_issue": "representation_consistency"},
+    {"file": "invalid/available_representations_mismatch.json", "expected_issue": "representation_consistency"},
+    {"file": "invalid/eligible_tasks_mismatch.json", "expected_issue": "label_consistency"},
+    {"file": "invalid/source_representation_mismatch.json", "expected_issue": "representation_consistency"},
+    {"file": "invalid/unsafe_source_path.json", "expected_issue": "source_provenance"}
+  ]
+}

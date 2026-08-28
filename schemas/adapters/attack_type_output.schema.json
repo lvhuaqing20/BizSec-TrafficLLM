@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/adapters/attack_type_output.schema.json",
+  "title": "Attack-Type Adapter Output v1",
+  "description": "Shared schema for the Attack-Type Adapter training target and inference output. Benign is produced by the pipeline gate and is not an Adapter class.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["attack_type", "attack_family"],
+  "properties": {
+    "attack_type": {
+      "type": "string",
+      "enum": ["web_attack", "apt", "malicious_doh", "botnet", "malware", "unknown_attack"]
+    },
+    "attack_family": {
+      "type": ["string", "null"],
+      "minLength": 1
+    }
+  }
+}

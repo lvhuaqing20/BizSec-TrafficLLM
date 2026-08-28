@@ -1,0 +1,47 @@
+{
+  "validation_version": "converted-canonical-jsonl-v1",
+  "status": "passed",
+  "validation_mode": "draft-2020-12+semantic",
+  "canonical_files": 22,
+  "failure_files": 22,
+  "records_validated": 544381,
+  "failure_records": 0,
+  "expected_records": 544381,
+  "unique_sample_ids": 544381,
+  "duplicate_sample_ids": 0,
+  "combined_content_sha256": "09b97848279ca2f25873f97b5531ff67716b8f44ae146a44ee9f25636fddf2da",
+  "parse_statuses": {
+    "ok": 453072,
+    "partial": 91309
+  },
+  "representations": {
+    "direction_sequence": 7400,
+    "http_request": 34604,
+    "packet": 502377
+  },
+  "missing_fields": {
+    "traffic.representations.http_request.host": 34603,
+    "traffic.representations.packet.network.dst_role": 56706,
+    "traffic.representations.packet.network.src_role": 56706
+  },
+  "warnings": {
+    "http_privacy_scan_completed_no_sensitive_value_match": 13810,
+    "multi_layer_ip_uses_innermost": 177,
+    "non_hex_payload_replaced_by_summary_hash": 30469,
+    "payload_content_truncated": 215530
+  },
+  "privacy_transforms": {
+    "drop_absolute_time": 502377,
+    "drop_mac": 502377,
+    "ip_to_role": 502377,
+    "redact_sensitive_http_values": 34604,
+    "summarize_non_hex_payload": 30469,
+    "truncate_payload_hex": 215530
+  },
+  "eligible_tasks": {
+    "attack_type": 100462,
+    "business": 390279,
+    "detection": 170423
+  },
+  "errors": []
+}

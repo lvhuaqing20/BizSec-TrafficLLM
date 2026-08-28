@@ -1,0 +1,51 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environments and credentials
+.venv/
+.venv-*/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+secrets*.json
+
+# Editor and operating-system metadata
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Packaging and generated runtime output
+dist/
+build/
+*.egg-info/
+/logs/
+/outputs/
+/runs/
+/wandb/
+*.log
+
+# Models and training checkpoints stay on the server
+/models/
+/checkpoints/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+pytorch_model*.bin
+
+# Full generated datasets stay on the server
+artifacts/datasets/
+
+# Regenerable large validation slices
+reports/**/pilot_*/
+reports/**/stratified_*/

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "chatglm2_ptuning_model_contract.schema.json",
+  "title": "ChatGLM2 P-Tuning v2 Model Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "model_id",
+    "revision",
+    "tokenizer_id",
+    "tokenizer_revision",
+    "trust_remote_code",
+    "model_loader",
+    "tokenizer_loader",
+    "dtype",
+    "tuning",
+    "prompt",
+    "reproducibility"
+  ],
+  "properties": {
+    "contract_version": {"const": "chatglm2-6b-ptuning-v2-v1"},
+    "model_id": {"const": "THUDM/chatglm2-6b"},
+    "revision": {"type": "string", "minLength": 1},
+    "tokenizer_id": {"const": "THUDM/chatglm2-6b"},
+    "tokenizer_revision": {"type": "string", "minLength": 1},
+    "trust_remote_code": {"const": true},
+    "model_loader": {"const": "AutoModel"},
+    "tokenizer_loader": {"const": "AutoTokenizer"},
+    "dtype": {"enum": ["float16", "bfloat16"]},
+    "tuning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "pre_seq_len",
+        "prefix_projection",
+        "base_model_trainable",
+        "prefix_encoder_trainable",
+        "embedding_trainable",
+        "lm_head_trainable"
+      ],
+      "properties": {
+        "method": {"const": "p_tuning_v2"},
+        "pre_seq_len": {"type": "integer", "minimum": 1},
+        "prefix_projection": {"type": "boolean"},
+        "base_model_trainable": {"const": false},
+        "prefix_encoder_trainable": {"const": true},
+        "embedding_trainable": {"const": false},
+        "lm_head_trainable": {"const": false}
+      }
+    },
+    "prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["builder", "query_format", "history", "loss"],
+      "properties": {
+        "builder": {"const": "tokenizer.build_prompt"},
+        "query_format": {"const": "{system}\n\nTraffic view:\n{user}"},
+        "history": {"type": "null"},
+        "loss": {"const": "assistant_only"}
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolve_revision_to_commit_before_full_training",
+        "save_resolved_model_commit_in_run_manifest",
+        "save_tokenizer_fingerprint_in_run_manifest"
+      ],
+      "properties": {
+        "resolve_revision_to_commit_before_full_training": {"const": true},
+        "save_resolved_model_commit_in_run_manifest": {"const": true},
+        "save_tokenizer_fingerprint_in_run_manifest": {"const": true}
+      }
+    }
+  }
+}

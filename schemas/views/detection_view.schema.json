@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bizsec.local/schemas/views/detection_view.schema.json",
+  "title": "Detection View v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["view_version", "task", "sample_id", "granularity", "traffic", "context", "priors", "quality"],
+  "properties": {
+    "view_version": {"const": "detection-view-v1"},
+    "task": {"const": "attack_detection"},
+    "sample_id": {"type": "string", "minLength": 1},
+    "granularity": {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/granularity"},
+    "traffic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["representation", "statistics"],
+      "properties": {
+        "representation": {
+          "oneOf": [
+            {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/packetRepresentation"},
+            {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/httpRepresentation"}
+          ]
+        },
+        "statistics": {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/statistics"}
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["security"],
+      "properties": {
+        "security": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rule_hits", "threat_intel_hit"],
+          "properties": {
+            "rule_hits": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1},
+              "uniqueItems": true
+            },
+            "threat_intel_hit": {"type": ["boolean", "null"]}
+          }
+        }
+      }
+    },
+    "priors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["business"],
+      "properties": {
+        "business": {
+          "oneOf": [
+            {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/businessPrior"},
+            {"type": "null"}
+          ]
+        }
+      }
+    },
+    "quality": {"$ref": "https://bizsec.local/schemas/views/shared_definitions.schema.json#/$defs/quality"}
+  }
+}

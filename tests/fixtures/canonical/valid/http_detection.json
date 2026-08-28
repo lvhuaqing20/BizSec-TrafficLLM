@@ -1,0 +1,55 @@
+{
+  "canonical_version": "canonical-traffic-sample-v1",
+  "sample_id": "98647c29692d5afbdc809929474e28bd29769fe93e17cc5cf15776c400da2b66",
+  "source": {
+    "source_kind": "dataset",
+    "dataset_id": "csic-2010",
+    "split": "train",
+    "source_file": "csic-2010/csic-2010_detection_packet_train.json",
+    "record_index": 0,
+    "source_format": "http_request_json",
+    "source_record_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "traffic": {
+    "primary_representation": "http_request",
+    "representations": {
+      "packet": null,
+      "http_request": {
+        "representation_type": "http_request",
+        "method": "POST",
+        "host": null,
+        "path": "/tienda1/publico/pagar.jsp",
+        "query": null,
+        "body": "modo=insertar&precio=<NUM>&B1=<REDACTED>"
+      },
+      "direction_sequence": null
+    },
+    "statistics": null
+  },
+  "context": {"asset_type": "web_application", "service_name": null},
+  "labels": {
+    "raw": {"value": "malicious", "normalized_value": "malicious"},
+    "eligible_tasks": ["detection", "attack_type"],
+    "targets": {
+      "business": null,
+      "detection": {"is_attack": true},
+      "attack_type": {"attack_type": "web_attack", "attack_family": null}
+    },
+    "mapping": {
+      "registry_version": "label-registry-v1",
+      "mapping_basis": "direct_task_semantics",
+      "review_required": false
+    }
+  },
+  "quality": {
+    "parse_status": "partial",
+    "available_representations": ["http_request"],
+    "missing_fields": ["traffic.representations.http_request.host"],
+    "warnings": [],
+    "privacy": {
+      "status": "applied",
+      "contains_direct_identifiers": false,
+      "transforms": ["redact_sensitive_http_values"]
+    }
+  }
+}
