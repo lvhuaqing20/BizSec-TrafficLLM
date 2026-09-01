@@ -10,6 +10,7 @@ from bizsec_trafficllm.training import (
     ChatGLM2TrainingInterface,
     TrainingDataError,
     iter_partition_records,
+    select_dataset_label_balanced_records,
 )
 from bizsec_trafficllm.training.interface import initialize_prefix_encoder
 
@@ -38,16 +39,19 @@ class FakeModel(torch.nn.Module):
         return SimpleNamespace(loss=loss)
 
 
-def make_record(sample_id):
+def make_record(sample_id, dataset_id="fixture", is_attack=True):
     return {
         "sample_id": sample_id,
         "task": "detection",
         "messages": [
             {"role": "system", "content": "detect"},
             {"role": "user", "content": "{}"},
-            {"role": "assistant", "content": '{"is_attack":true}'},
+            {
+                "role": "assistant",
+                "content": json.dumps({"is_attack": is_attack}),
+            },
         ],
-        "metadata": {"dataset_id": "fixture", "split": "train"},
+        "metadata": {"dataset_id": dataset_id, "split": "train"},
     }
 
 
@@ -94,6 +98,38 @@ class TrainingInterfaceTests(unittest.TestCase):
             forbidden.mkdir(parents=True)
             with self.assertRaises(TrainingDataError):
                 list(iter_partition_records(forbidden, "detection", 0.05, 42))
+
+    def test_dataset_label_balanced_sampling_is_reproducible(self):
+        records = []
+        for dataset_id in ("alpha", "beta", "gamma"):
+            for is_attack in (False, True):
+                records.extend(
+                    make_record(
+                        f"{dataset_id}-{is_attack}-{index}",
+                        dataset_id=dataset_id,
+                        is_attack=is_attack,
+                    )
+                    for index in range(8)
+                )
+        selected, audit = select_dataset_label_balanced_records(
+            records, "detection", limit=30, seed=42
+        )
+        repeated, repeated_audit = select_dataset_label_balanced_records(
+            reversed(records), "detection", limit=30, seed=42
+        )
+        self.assertEqual(
+            [record["sample_id"] for record in selected],
+            [record["sample_id"] for record in repeated],
+        )
+        self.assertEqual(audit, repeated_audit)
+        self.assertEqual(
+            audit["selected_dataset_distribution"],
+            {"alpha": 10, "beta": 10, "gamma": 10},
+        )
+        self.assertEqual(
+            audit["selected_label_distribution"], {"false": 15, "true": 15}
+        )
+        self.assertEqual(audit["population_dataset_label_groups"], 6)
 
 
 if __name__ == "__main__":

@@ -20,6 +20,7 @@ from bizsec_trafficllm.tokenization import ChatGLM2FeatureAdapter  # noqa: E402
 from bizsec_trafficllm.training import (  # noqa: E402
     ChatGLM2TrainingInterface,
     iter_partition_records,
+    select_dataset_label_balanced_records,
 )
 from bizsec_trafficllm.training.pilot import run_pilot_training  # noqa: E402
 
@@ -35,6 +36,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gradient-accumulation-steps", type=int, default=1)
     parser.add_argument("--learning-rate", type=float)
     parser.add_argument("--max-source-length", type=int, default=256)
+    parser.add_argument(
+        "--sampling-strategy",
+        choices=("sequential", "dataset-label-balanced"),
+        default="sequential",
+    )
+    parser.add_argument("--sampling-seed", type=int)
     parser.add_argument("--disable-gradient-checkpointing", action="store_true")
     return parser.parse_args()
 
@@ -72,16 +79,40 @@ def main() -> None:
     required_records = args.optimizer_steps * args.gradient_accumulation_steps
     messages_root = PROJECT_ROOT / task_config["messages_root"]
     validation = task_config["validation"]
-    records = list(
-        iter_partition_records(
-            messages_root,
-            args.task,
-            float(validation["fraction"]),
-            int(validation["seed"]),
-            partition="train",
-            limit=required_records,
+    if args.sampling_strategy == "dataset-label-balanced":
+        sampling_seed = (
+            int(args.sampling_seed)
+            if args.sampling_seed is not None
+            else int(optimization["seed"])
         )
-    )
+        records, sampling_audit = select_dataset_label_balanced_records(
+            iter_partition_records(
+                messages_root,
+                args.task,
+                float(validation["fraction"]),
+                int(validation["seed"]),
+                partition="train",
+            ),
+            args.task,
+            required_records,
+            sampling_seed,
+        )
+    else:
+        records = list(
+            iter_partition_records(
+                messages_root,
+                args.task,
+                float(validation["fraction"]),
+                int(validation["seed"]),
+                partition="train",
+                limit=required_records,
+            )
+        )
+        sampling_audit = {
+            "strategy": "sequential",
+            "seed": None,
+            "selected_records": len(records),
+        }
     if len(records) != required_records:
         raise RuntimeError(
             f"requested {required_records} records but found {len(records)}"
@@ -147,6 +178,7 @@ def main() -> None:
             "formal_max_source_length": formal_max_source_length,
             "pilot_max_source_length": args.max_source_length,
             "max_target_length": int(task_config["max_target_length"]),
+            "sampling": sampling_audit,
             "checkpoint": {
                 "path": str(checkpoint_path),
                 "format": "PrefixEncoder-only PyTorch state_dict",
