@@ -66,10 +66,16 @@ def _load_tensor_mapping(path: Path) -> Mapping[str, Any]:
 def _load_training_metadata(
     checkpoint_path: Path, checkpoint_sha256: str, expected_task: str
 ) -> Dict[str, Any]:
-    result_path = checkpoint_path.with_name("pilot-training-result.json")
-    if not result_path.is_file():
+    direct_result = checkpoint_path.with_name("pilot-training-result.json")
+    parent_result = checkpoint_path.parent.parent / "pilot-training-result.json"
+    candidates = [direct_result]
+    if parent_result != direct_result:
+        candidates.append(parent_result)
+    result_path = next((path for path in candidates if path.is_file()), None)
+    if result_path is None:
         raise AdapterCheckpointError(
-            f"task-bound Adapter load requires training metadata: {result_path}"
+            "task-bound Adapter load requires training metadata; checked: "
+            + ", ".join(str(path) for path in candidates)
         )
     try:
         value = json.loads(result_path.read_text(encoding="utf-8"))
@@ -80,7 +86,34 @@ def _load_training_metadata(
         raise AdapterCheckpointError(
             f"checkpoint task mismatch: metadata={task!r}, requested={expected_task!r}"
         )
-    reported_sha256 = value.get("checkpoint", {}).get("sha256")
+    is_direct = result_path == direct_result
+    metadata_scope = "final"
+    checkpoint_metadata = value.get("checkpoint", {}) if is_direct else None
+    effective_optimizer_steps = value.get("optimizer_steps")
+    if not is_direct:
+        resolved_checkpoint = checkpoint_path.resolve()
+        periodic = value.get("periodic_checkpoints")
+        if not isinstance(periodic, list):
+            raise AdapterCheckpointError(
+                "parent training metadata does not contain periodic_checkpoints"
+            )
+        matches = []
+        for item in periodic:
+            if not isinstance(item, Mapping) or not isinstance(item.get("path"), str):
+                continue
+            if Path(item["path"]).resolve() == resolved_checkpoint:
+                matches.append(item)
+        if len(matches) != 1:
+            raise AdapterCheckpointError(
+                "periodic checkpoint path must match exactly one metadata entry: "
+                f"matches={len(matches)}"
+            )
+        checkpoint_metadata = matches[0]
+        metadata_scope = "periodic"
+        effective_optimizer_steps = checkpoint_metadata.get("optimizer_step")
+    if not isinstance(checkpoint_metadata, Mapping):
+        raise AdapterCheckpointError("training metadata checkpoint entry is invalid")
+    reported_sha256 = checkpoint_metadata.get("sha256")
     if reported_sha256 != checkpoint_sha256:
         raise AdapterCheckpointError(
             "checkpoint SHA256 does not match its training metadata"
@@ -89,9 +122,11 @@ def _load_training_metadata(
         "path": str(result_path.resolve()),
         "task": task,
         "interface_version": value.get("interface_version"),
-        "optimizer_steps": value.get("optimizer_steps"),
+        "optimizer_steps": effective_optimizer_steps,
+        "training_run_optimizer_steps": value.get("optimizer_steps"),
         "max_source_length": value.get("pilot_max_source_length"),
         "max_target_length": value.get("max_target_length"),
+        "metadata_scope": metadata_scope,
     }
 
 

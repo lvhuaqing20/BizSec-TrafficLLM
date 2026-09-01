@@ -119,6 +119,47 @@ class AdapterCheckpointTests(unittest.TestCase):
                     model, path, expected_task="detection"
                 )
 
+    def test_periodic_checkpoint_uses_parent_training_metadata(self):
+        model = FakeAdapterModel()
+        with tempfile.TemporaryDirectory() as directory:
+            run_dir = Path(directory) / "detection-run"
+            checkpoint_dir = run_dir / "checkpoint-step-000500"
+            checkpoint_dir.mkdir(parents=True)
+            path = self.save_checkpoint(
+                checkpoint_dir,
+                {
+                    "transformer.prefix_encoder.weight": torch.full_like(
+                        model.transformer.prefix_encoder.weight.detach(), 0.25
+                    )
+                },
+            )
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            metadata = {
+                "task": "detection",
+                "interface_version": "test-pilot-v1",
+                "optimizer_steps": 2500,
+                "pilot_max_source_length": 1024,
+                "max_target_length": 32,
+                "checkpoint": {"sha256": "final-checkpoint-not-used"},
+                "periodic_checkpoints": [
+                    {
+                        "optimizer_step": 500,
+                        "path": str(path.resolve()),
+                        "sha256": digest,
+                    }
+                ],
+            }
+            (run_dir / "pilot-training-result.json").write_text(
+                json.dumps(metadata), encoding="utf-8"
+            )
+            report = load_prefix_encoder_checkpoint(
+                model, path, expected_task="detection"
+            )
+        training = report["training_metadata"]
+        self.assertEqual(training["metadata_scope"], "periodic")
+        self.assertEqual(training["optimizer_steps"], 500)
+        self.assertEqual(training["training_run_optimizer_steps"], 2500)
+
 
 if __name__ == "__main__":
     unittest.main()
