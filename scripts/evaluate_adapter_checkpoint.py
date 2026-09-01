@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate one real Adapter checkpoint on a fixed Messages v1 validation subset."""
+"""Evaluate one Adapter on a balanced validation subset or a complete v1 split."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import argparse
 from collections import Counter
 import json
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -17,6 +18,7 @@ if str(SRC_ROOT) not in sys.path:
     sys.path.insert(0, str(SRC_ROOT))
 
 from bizsec_trafficllm.evaluation import (  # noqa: E402
+    iter_test_records,
     select_balanced_records,
     summarize_adapter_predictions,
     training_record_to_inference,
@@ -32,7 +34,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default="cuda:0")
-    parser.add_argument("--limit", type=int, default=50)
+    parser.add_argument(
+        "--partition", choices=("validation", "test"), default="validation"
+    )
+    parser.add_argument(
+        "--selection-strategy",
+        choices=("label-balanced", "all"),
+        default="label-balanced",
+    )
+    parser.add_argument("--limit", type=int)
+    parser.add_argument("--log-every", type=int, default=100)
     return parser.parse_args()
 
 
@@ -51,25 +62,45 @@ def assert_external_output(path: Path) -> None:
 
 def main() -> None:
     args = parse_args()
-    if args.limit <= 0:
+    if args.limit is not None and args.limit <= 0:
         raise ValueError("limit must be positive")
+    if args.log_every <= 0:
+        raise ValueError("log-every must be positive")
+    if args.partition == "test" and args.selection_strategy != "all":
+        raise ValueError("test partition must use --selection-strategy all")
+    if args.selection_strategy == "all" and args.limit is not None:
+        raise ValueError("--limit cannot be combined with --selection-strategy all")
     assert_external_output(args.output_dir)
     config = load_json(
         PROJECT_ROOT / "configs" / "training" / f"{args.task}_ptuning_v2.json"
     )
     validation = config["validation"]
-    validation_records = iter_partition_records(
-        PROJECT_ROOT / config["messages_root"],
-        args.task,
-        float(validation["fraction"]),
-        int(validation["seed"]),
-        partition="validation",
-    )
-    records = select_balanced_records(
-        args.task,
-        validation_records,
-        args.limit,
-        int(validation["seed"]),
+    messages_root = PROJECT_ROOT / config["messages_root"]
+    if args.partition == "validation":
+        source_records = iter_partition_records(
+            messages_root,
+            args.task,
+            float(validation["fraction"]),
+            int(validation["seed"]),
+            partition="validation",
+        )
+    else:
+        source_records = iter_test_records(messages_root, args.task)
+    if args.selection_strategy == "label-balanced":
+        records = select_balanced_records(
+            args.task,
+            source_records,
+            args.limit if args.limit is not None else 50,
+            int(validation["seed"]),
+        )
+    else:
+        records = list(source_records)
+        if not records:
+            raise ValueError(f"no records found in {args.partition} partition")
+    print(
+        f"[{args.task}] evaluation_records={len(records)} "
+        f"partition={args.partition} selection={args.selection_strategy}",
+        flush=True,
     )
     interface = ChatGLM2InferenceInterface.from_adapter_checkpoint(
         PROJECT_ROOT,
@@ -83,8 +114,23 @@ def main() -> None:
     source_length = int(metadata["max_source_length"])
     target_length = int(metadata["max_target_length"])
     rows = []
-    for record in records:
-        request, expected = training_record_to_inference(record)
+    schema_valid_count = 0
+    started = time.monotonic()
+    for index, record in enumerate(records, start=1):
+        record_metadata = record.get("metadata") or {}
+        dataset_id = record_metadata.get("dataset_id")
+        if not isinstance(dataset_id, str) or not dataset_id:
+            raise ValueError(
+                f"record is missing metadata.dataset_id: {record.get('sample_id')}"
+            )
+        request, expected = training_record_to_inference(
+            record,
+            evaluation_partition=(
+                "deterministic_validation"
+                if args.partition == "validation"
+                else "held_out_test"
+            ),
+        )
         result = interface.predict(
             request,
             max_source_length=source_length,
@@ -93,6 +139,7 @@ def main() -> None:
         rows.append(
             {
                 "sample_id": record["sample_id"],
+                "dataset_id": dataset_id,
                 "expected": expected,
                 "prediction": result["parsed_output"],
                 "raw_model_output": result["raw_model_output"],
@@ -105,7 +152,25 @@ def main() -> None:
                 "inference_seconds": result["inference_seconds"],
             }
         )
+        schema_valid_count += bool(result["schema_valid"])
+        if index == 1 or index % args.log_every == 0 or index == len(records):
+            elapsed = time.monotonic() - started
+            rate = index / elapsed if elapsed else 0.0
+            remaining = (len(records) - index) / rate if rate else 0.0
+            print(
+                f"[{args.task}] evaluated={index}/{len(records)} "
+                f"schema_valid={schema_valid_count}/{index} elapsed={elapsed:.1f}s "
+                f"eta={remaining:.1f}s",
+                flush=True,
+            )
     summary = summarize_adapter_predictions(args.task, rows)
+    grouped_rows = {}
+    for row in rows:
+        grouped_rows.setdefault(row["dataset_id"], []).append(row)
+    summary["by_dataset"] = {
+        dataset_id: summarize_adapter_predictions(args.task, dataset_rows)
+        for dataset_id, dataset_rows in sorted(grouped_rows.items())
+    }
     label_key = {
         "business": "business_type",
         "detection": "is_attack",
@@ -114,15 +179,29 @@ def main() -> None:
     summary.update(
         {
             "status": "passed",
-            "scope": (
-                "fixed deterministic label-balanced validation subset; "
-                "not final test evaluation"
-            ),
+            "scope": {
+                ("validation", "label-balanced"): (
+                    "fixed deterministic label-balanced validation subset; "
+                    "checkpoint selection only, not final test evaluation"
+                ),
+                ("validation", "all"): (
+                    "complete deterministic validation partition; "
+                    "not final test evaluation"
+                ),
+                ("test", "all"): (
+                    "complete held-out Messages v1 test split; final evaluation "
+                    "for a frozen checkpoint"
+                ),
+            }[(args.partition, args.selection_strategy)],
             "task": args.task,
-            "partition": "validation",
+            "partition": args.partition,
             "validation_fraction": validation["fraction"],
             "validation_seed": validation["seed"],
-            "selection_strategy": "deterministic_label_round_robin",
+            "selection_strategy": (
+                "deterministic_label_round_robin"
+                if args.selection_strategy == "label-balanced"
+                else "all_records"
+            ),
             "expected_label_distribution": dict(
                 sorted(
                     Counter(str(row["expected"][label_key]) for row in rows).items()

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import hashlib
 from collections import defaultdict
+from pathlib import Path
 from typing import Any, DefaultDict, Dict, Iterable, List, Mapping, Tuple
 
 
@@ -15,8 +16,56 @@ class AdapterEvaluationError(ValueError):
     """Raised when an evaluation record or prediction is malformed."""
 
 
+def _reject_v2_path(path: Path) -> None:
+    if any("v2" in part.lower() for part in path.parts):
+        raise AdapterEvaluationError(f"refusing excluded v2 path: {path}")
+
+
+def iter_test_records(messages_root: Path, task: str):
+    """Stream the held-out Messages v1 test split for final evaluation only."""
+
+    if task not in SUPPORTED_TASKS:
+        raise AdapterEvaluationError(f"unsupported task: {task!r}")
+    root = Path(messages_root)
+    _reject_v2_path(root)
+    if not root.is_dir():
+        raise AdapterEvaluationError(f"messages root does not exist: {root}")
+    paths = sorted(root.glob("*/test.jsonl"))
+    if not paths:
+        raise AdapterEvaluationError(f"no test.jsonl files found under: {root}")
+    for path in paths:
+        _reject_v2_path(path)
+        if not path.is_file() or path.stat().st_size == 0:
+            continue
+        with path.open("r", encoding="utf-8") as handle:
+            for line_number, line in enumerate(handle, start=1):
+                if not line.strip():
+                    continue
+                try:
+                    record = json.loads(line)
+                except json.JSONDecodeError as exc:
+                    raise AdapterEvaluationError(
+                        f"invalid JSON at {path}:{line_number}: {exc}"
+                    ) from exc
+                if record.get("task") != task:
+                    raise AdapterEvaluationError(
+                        f"task mismatch at {path}:{line_number}: "
+                        f"{record.get('task')!r} != {task!r}"
+                    )
+                metadata = record.get("metadata")
+                if (
+                    not isinstance(metadata, Mapping)
+                    or metadata.get("split") != "test"
+                ):
+                    raise AdapterEvaluationError(
+                        f"final evaluation only reads test records: {path}:{line_number}"
+                    )
+                yield record
+
+
 def training_record_to_inference(
     record: Mapping[str, Any],
+    evaluation_partition: str = "deterministic_validation",
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     task = record.get("task")
     if task not in SUPPORTED_TASKS:
@@ -40,7 +89,7 @@ def training_record_to_inference(
         "messages": [dict(messages[0]), dict(messages[1])],
         "metadata": {
             "template_version": (record.get("metadata") or {}).get("template_version"),
-            "evaluation_partition": "deterministic_validation",
+            "evaluation_partition": evaluation_partition,
         },
     }
     return request, expected

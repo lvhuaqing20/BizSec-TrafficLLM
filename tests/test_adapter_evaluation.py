@@ -1,7 +1,11 @@
 import json
+import tempfile
 import unittest
+from pathlib import Path
 
 from bizsec_trafficllm.evaluation import (
+    AdapterEvaluationError,
+    iter_test_records,
     select_balanced_records,
     summarize_adapter_predictions,
     training_record_to_inference,
@@ -40,6 +44,47 @@ class AdapterEvaluationTests(unittest.TestCase):
         )
         self.assertEqual(len(request["messages"]), 2)
         self.assertEqual(expected, {"is_attack": True})
+
+    def test_training_record_marks_requested_evaluation_partition(self):
+        request, _ = training_record_to_inference(
+            {
+                "sample_id": "sample",
+                "task": "detection",
+                "messages": [
+                    {"role": "system", "content": "detect"},
+                    {"role": "user", "content": "{}"},
+                    {"role": "assistant", "content": '{"is_attack":true}'},
+                ],
+                "metadata": {"template_version": "v1"},
+            },
+            evaluation_partition="held_out_test",
+        )
+        self.assertEqual(
+            request["metadata"]["evaluation_partition"], "held_out_test"
+        )
+
+    def test_iter_test_records_reads_only_declared_test_records(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "messages" / "v1" / "detection"
+            dataset = root / "example"
+            dataset.mkdir(parents=True)
+            record = {
+                "sample_id": "sample",
+                "task": "detection",
+                "messages": [],
+                "metadata": {"split": "test"},
+            }
+            (dataset / "test.jsonl").write_text(
+                json.dumps(record) + "\n", encoding="utf-8"
+            )
+            self.assertEqual(list(iter_test_records(root, "detection")), [record])
+
+    def test_iter_test_records_rejects_v2_path(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "messages" / "v2" / "detection"
+            root.mkdir(parents=True)
+            with self.assertRaisesRegex(AdapterEvaluationError, "excluded v2"):
+                list(iter_test_records(root, "detection"))
 
     def test_detection_metrics_count_invalid_as_false_negative(self):
         summary = summarize_adapter_predictions(
