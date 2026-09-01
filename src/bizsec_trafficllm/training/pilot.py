@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import math
-from typing import Any, Dict, Iterable, Mapping
+from pathlib import Path
+from typing import Any, Callable, Dict, Iterable, Mapping, Optional
 
 
 class PilotTrainingError(RuntimeError):
@@ -30,6 +31,47 @@ def _tensor_digest(named_parameters: Iterable[Any]) -> str:
     return digest.hexdigest()
 
 
+def save_prefix_encoder_checkpoint(prefix_encoder: Any, path: Path) -> Dict[str, Any]:
+    """Save and reload-verify one PrefixEncoder-only checkpoint."""
+
+    try:
+        import torch
+    except ImportError as exc:  # pragma: no cover
+        raise PilotTrainingError("PyTorch is required to save a checkpoint") from exc
+    checkpoint_path = Path(path)
+    if checkpoint_path.exists():
+        raise PilotTrainingError(f"refusing to overwrite checkpoint: {checkpoint_path}")
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    checkpoint_state = {
+        f"transformer.prefix_encoder.{name}": value.detach().cpu()
+        for name, value in prefix_encoder.state_dict().items()
+    }
+    torch.save(checkpoint_state, checkpoint_path)
+    loaded_state = torch.load(checkpoint_path, map_location="cpu")
+    reload_verified = (
+        loaded_state.keys() == checkpoint_state.keys()
+        and all(
+            torch.equal(loaded_state[name], checkpoint_state[name])
+            for name in checkpoint_state
+        )
+    )
+    if not reload_verified:
+        raise PilotTrainingError(
+            f"saved PrefixEncoder checkpoint failed reload verification: {checkpoint_path}"
+        )
+    digest = hashlib.sha256()
+    with checkpoint_path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return {
+        "path": str(checkpoint_path),
+        "format": "PrefixEncoder-only PyTorch state_dict",
+        "size_bytes": checkpoint_path.stat().st_size,
+        "sha256": digest.hexdigest(),
+        "reload_verified": reload_verified,
+    }
+
+
 def run_pilot_training(
     interface: Any,
     records: Iterable[Mapping[str, Any]],
@@ -37,6 +79,7 @@ def run_pilot_training(
     gradient_accumulation_steps: int,
     learning_rate: float,
     enable_gradient_checkpointing: bool = True,
+    optimizer_step_callback: Optional[Callable[[Mapping[str, Any]], None]] = None,
 ) -> Dict[str, Any]:
     """Run a bounded PrefixEncoder update and return verification metrics.
 
@@ -142,13 +185,14 @@ def run_pilot_training(
         for _, parameter in named_trainable:
             if not bool(torch.isfinite(parameter).all().item()):
                 raise PilotTrainingError("optimizer produced non-finite PrefixEncoder values")
-        step_reports.append(
-            {
-                "optimizer_step": step_index + 1,
-                "mean_micro_loss": sum(micro_losses) / len(micro_losses),
-                "gradient_norm": gradient_norm,
-            }
-        )
+        step_report = {
+            "optimizer_step": step_index + 1,
+            "mean_micro_loss": sum(micro_losses) / len(micro_losses),
+            "gradient_norm": gradient_norm,
+        }
+        step_reports.append(step_report)
+        if optimizer_step_callback is not None:
+            optimizer_step_callback(dict(step_report))
 
     interface.model.eval()
     delta_square_sum = 0.0

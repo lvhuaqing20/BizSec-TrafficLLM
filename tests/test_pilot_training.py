@@ -1,9 +1,15 @@
+import tempfile
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 
 import torch
 
-from bizsec_trafficllm.training.pilot import PilotTrainingError, run_pilot_training
+from bizsec_trafficllm.training.pilot import (
+    PilotTrainingError,
+    run_pilot_training,
+    save_prefix_encoder_checkpoint,
+)
 
 
 class FakeTrainableModel(torch.nn.Module):
@@ -62,6 +68,29 @@ class PilotTrainingTests(unittest.TestCase):
         )
         self.assertTrue(interface.model.checkpointing_enabled)
         self.assertTrue(torch.equal(base_before, interface.model.base.weight))
+
+    def test_optimizer_step_callback_receives_every_step(self):
+        reports = []
+        run_pilot_training(
+            FakeInterface(),
+            [{"sample_id": "one"}, {"sample_id": "two"}],
+            optimizer_steps=2,
+            gradient_accumulation_steps=1,
+            learning_rate=0.02,
+            optimizer_step_callback=reports.append,
+        )
+        self.assertEqual([report["optimizer_step"] for report in reports], [1, 2])
+        self.assertTrue(all(report["mean_micro_loss"] > 0 for report in reports))
+
+    def test_prefix_checkpoint_is_saved_and_reload_verified(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "checkpoint" / "pytorch_model.bin"
+            metadata = save_prefix_encoder_checkpoint(
+                FakeTrainableModel().transformer.prefix_encoder, path
+            )
+            self.assertTrue(path.is_file())
+            self.assertTrue(metadata["reload_verified"])
+            self.assertEqual(len(metadata["sha256"]), 64)
 
     def test_insufficient_records_is_rejected(self):
         with self.assertRaisesRegex(PilotTrainingError, "iterator ended early"):

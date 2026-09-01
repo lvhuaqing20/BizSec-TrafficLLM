@@ -4,9 +4,9 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -22,7 +22,10 @@ from bizsec_trafficllm.training import (  # noqa: E402
     iter_partition_records,
     select_dataset_label_balanced_records,
 )
-from bizsec_trafficllm.training.pilot import run_pilot_training  # noqa: E402
+from bizsec_trafficllm.training.pilot import (  # noqa: E402
+    run_pilot_training,
+    save_prefix_encoder_checkpoint,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -42,6 +45,9 @@ def parse_args() -> argparse.Namespace:
         default="sequential",
     )
     parser.add_argument("--sampling-seed", type=int)
+    parser.add_argument("--log-every-steps", type=int, default=10)
+    parser.add_argument("--checkpoint-every-steps", type=int, default=0)
+    parser.add_argument("--summary-only", action="store_true")
     parser.add_argument("--disable-gradient-checkpointing", action="store_true")
     return parser.parse_args()
 
@@ -53,14 +59,6 @@ def assert_external_output(path: Path) -> None:
     except ValueError:
         return
     raise ValueError("pilot output must be outside the Git repository")
-
-
-def file_sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for block in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
 
 
 def main() -> None:
@@ -77,8 +75,17 @@ def main() -> None:
         else float(optimization["learning_rate"])
     )
     required_records = args.optimizer_steps * args.gradient_accumulation_steps
+    if args.log_every_steps <= 0:
+        raise ValueError("log-every-steps must be positive")
+    if args.checkpoint_every_steps < 0:
+        raise ValueError("checkpoint-every-steps cannot be negative")
     messages_root = PROJECT_ROOT / task_config["messages_root"]
     validation = task_config["validation"]
+    print(
+        f"[{args.task}] selecting {required_records} train records "
+        f"with strategy={args.sampling_strategy}",
+        flush=True,
+    )
     if args.sampling_strategy == "dataset-label-balanced":
         sampling_seed = (
             int(args.sampling_seed)
@@ -118,6 +125,18 @@ def main() -> None:
             f"requested {required_records} records but found {len(records)}"
         )
 
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_dir = args.output_dir.resolve() / f"{args.task}-{stamp}"
+    run_dir.mkdir(parents=True, exist_ok=False)
+    print(
+        f"[{args.task}] records_ready={len(records)} "
+        f"datasets={sampling_audit.get('population_datasets', 'not-audited')} "
+        f"labels={sampling_audit.get('population_labels', 'not-audited')}",
+        flush=True,
+    )
+    print(f"[{args.task}] run_dir={run_dir}", flush=True)
+    print(f"[{args.task}] loading model from {args.model_dir.resolve()}", flush=True)
+
     interface = ChatGLM2TrainingInterface.from_pretrained(
         PROJECT_ROOT, args.task, args.model_dir, args.device
     )
@@ -138,6 +157,51 @@ def main() -> None:
         raise RuntimeError("PyTorch is required") from exc
     if args.device.startswith("cuda"):
         torch.cuda.reset_peak_memory_stats()
+    started = time.monotonic()
+    periodic_checkpoints = []
+    print(
+        f"[{args.task}] training_start steps={args.optimizer_steps} "
+        f"gradient_accumulation={args.gradient_accumulation_steps} "
+        f"max_source_length={args.max_source_length}",
+        flush=True,
+    )
+
+    def report_optimizer_step(step_report):
+        step = int(step_report["optimizer_step"])
+        if (
+            step == 1
+            or step % args.log_every_steps == 0
+            or step == args.optimizer_steps
+        ):
+            elapsed = time.monotonic() - started
+            rate = step / elapsed if elapsed > 0 else 0.0
+            remaining = args.optimizer_steps - step
+            eta = remaining / rate if rate > 0 else 0.0
+            print(
+                f"[{args.task}] step={step}/{args.optimizer_steps} "
+                f"loss={step_report['mean_micro_loss']:.6f} "
+                f"grad_norm={step_report['gradient_norm']:.6f} "
+                f"elapsed={elapsed:.1f}s eta={eta:.1f}s",
+                flush=True,
+            )
+        if (
+            args.checkpoint_every_steps
+            and step % args.checkpoint_every_steps == 0
+            and step < args.optimizer_steps
+        ):
+            checkpoint = save_prefix_encoder_checkpoint(
+                interface.model.transformer.prefix_encoder,
+                run_dir
+                / f"checkpoint-step-{step:06d}"
+                / "pytorch_model.bin",
+            )
+            periodic_checkpoints.append({"optimizer_step": step, **checkpoint})
+            print(
+                f"[{args.task}] checkpoint_saved step={step} "
+                f"sha256={checkpoint['sha256']}",
+                flush=True,
+            )
+
     result = run_pilot_training(
         interface,
         records,
@@ -145,28 +209,12 @@ def main() -> None:
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         learning_rate=learning_rate,
         enable_gradient_checkpointing=not args.disable_gradient_checkpointing,
+        optimizer_step_callback=report_optimizer_step,
     )
 
-    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    run_dir = args.output_dir.resolve() / f"{args.task}-{stamp}"
-    run_dir.mkdir(parents=True, exist_ok=False)
     prefix_encoder = interface.model.transformer.prefix_encoder
-    checkpoint_state = {
-        f"transformer.prefix_encoder.{name}": value.detach().cpu()
-        for name, value in prefix_encoder.state_dict().items()
-    }
     checkpoint_path = run_dir / "pytorch_model.bin"
-    torch.save(checkpoint_state, checkpoint_path)
-    loaded_state = torch.load(checkpoint_path, map_location="cpu")
-    reload_verified = (
-        loaded_state.keys() == checkpoint_state.keys()
-        and all(
-            torch.equal(loaded_state[name], checkpoint_state[name])
-            for name in checkpoint_state
-        )
-    )
-    if not reload_verified:
-        raise RuntimeError("saved PrefixEncoder checkpoint failed reload verification")
+    final_checkpoint = save_prefix_encoder_checkpoint(prefix_encoder, checkpoint_path)
 
     result.update(
         {
@@ -179,13 +227,13 @@ def main() -> None:
             "pilot_max_source_length": args.max_source_length,
             "max_target_length": int(task_config["max_target_length"]),
             "sampling": sampling_audit,
-            "checkpoint": {
-                "path": str(checkpoint_path),
-                "format": "PrefixEncoder-only PyTorch state_dict",
-                "size_bytes": checkpoint_path.stat().st_size,
-                "sha256": file_sha256(checkpoint_path),
-                "reload_verified": reload_verified,
+            "progress": {
+                "log_every_steps": args.log_every_steps,
+                "checkpoint_every_steps": args.checkpoint_every_steps,
+                "elapsed_seconds": time.monotonic() - started,
             },
+            "periodic_checkpoints": periodic_checkpoints,
+            "checkpoint": final_checkpoint,
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
         }
     )
@@ -193,7 +241,23 @@ def main() -> None:
     result_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    if args.summary_only:
+        print(
+            json.dumps(
+                {
+                    "status": result["status"],
+                    "task": result["task"],
+                    "optimizer_steps": result["optimizer_steps"],
+                    "elapsed_seconds": result["progress"]["elapsed_seconds"],
+                    "periodic_checkpoints": len(result["periodic_checkpoints"]),
+                    "checkpoint": result["checkpoint"],
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+    else:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
     print(f"result_path={result_path}")
 
 
