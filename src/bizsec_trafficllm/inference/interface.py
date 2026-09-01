@@ -9,6 +9,8 @@ from typing import Any, Dict, Mapping, Optional
 
 from jsonschema import Draft202012Validator
 
+from .checkpoint import load_prefix_encoder_checkpoint
+
 
 SUPPORTED_TASKS = {"business", "detection", "attack_type"}
 OUTPUT_SCHEMA_NAMES = {
@@ -53,10 +55,14 @@ class ChatGLM2InferenceInterface:
         tokenizer: Any,
         schema_root: Path,
         device: str,
+        adapter_checkpoint: Optional[Mapping[str, Any]] = None,
     ) -> None:
         self.model = model
         self.tokenizer = tokenizer
         self.device = device
+        self.adapter_checkpoint = (
+            dict(adapter_checkpoint) if adapter_checkpoint is not None else None
+        )
         adapter_root = Path(schema_root) / "adapters"
         self.validators = {
             task: Draft202012Validator(
@@ -97,22 +103,114 @@ class ChatGLM2InferenceInterface:
         ).to(device).eval()
         return cls(model, tokenizer, schema_root, device)
 
+    @classmethod
+    def from_adapter_checkpoint(
+        cls,
+        project_root: Path,
+        task: str,
+        model_dir: Path,
+        checkpoint_path: Path,
+        schema_root: Path,
+        device: str = "cuda:0",
+    ) -> "ChatGLM2InferenceInterface":
+        """Load the task Prefix contract, then strictly attach its checkpoint."""
+
+        if task not in SUPPORTED_TASKS:
+            raise InferenceInterfaceError(f"unsupported task: {task!r}")
+        try:
+            from bizsec_trafficllm.training import ChatGLM2TrainingInterface
+
+            training_interface = ChatGLM2TrainingInterface.from_pretrained(
+                project_root, task, model_dir, device
+            )
+            report = load_prefix_encoder_checkpoint(
+                training_interface.model,
+                checkpoint_path,
+                expected_task=task,
+            )
+        except Exception as exc:
+            if isinstance(exc, InferenceInterfaceError):
+                raise
+            raise InferenceInterfaceError(
+                f"cannot initialize {task} Adapter inference: {exc}"
+            ) from exc
+
+        model = training_interface.model
+        model.requires_grad_(False)
+        model.eval()
+        return cls(
+            model,
+            training_interface.tokenizer,
+            schema_root,
+            device,
+            adapter_checkpoint=report,
+        )
+
     def predict(
         self,
         request: Mapping[str, Any],
         max_length: int = 1024,
+        max_source_length: Optional[int] = None,
     ) -> Dict[str, Any]:
         query = request_to_query(request)
         task = request["task"]
+        if self.adapter_checkpoint is not None:
+            metadata = self.adapter_checkpoint.get("training_metadata") or {}
+            trained_source_length = metadata.get("max_source_length")
+            if max_source_length != trained_source_length:
+                raise InferenceInterfaceError(
+                    "Adapter inference max_source_length must match training metadata: "
+                    f"requested={max_source_length!r}, trained={trained_source_length!r}"
+                )
         started = time.time()
-        response, history = self.model.chat(
-            self.tokenizer,
-            query,
-            history=[],
-            do_sample=False,
-            num_beams=1,
-            max_length=max_length,
-        )
+        raw_source_tokens: Optional[int] = None
+        used_source_tokens: Optional[int] = None
+        source_truncated = False
+        if max_source_length is None:
+            response, history = self.model.chat(
+                self.tokenizer,
+                query,
+                history=[],
+                do_sample=False,
+                num_beams=1,
+                max_length=max_length,
+            )
+        else:
+            if max_source_length <= 0:
+                raise InferenceInterfaceError("max_source_length must be positive")
+            if max_length <= max_source_length:
+                raise InferenceInterfaceError(
+                    "max_length must exceed max_source_length to leave room for output"
+                )
+            try:
+                import torch
+            except ImportError as exc:  # pragma: no cover
+                raise InferenceInterfaceError(
+                    "PyTorch is required for length-aligned inference"
+                ) from exc
+            build_prompt = getattr(self.tokenizer, "build_prompt", None)
+            if not callable(build_prompt):
+                raise InferenceInterfaceError("tokenizer does not provide build_prompt")
+            prompt = build_prompt(query, history=None)
+            source_ids = self.tokenizer.encode(prompt, add_special_tokens=True)
+            raw_source_tokens = len(source_ids)
+            source_ids = source_ids[:max_source_length]
+            used_source_tokens = len(source_ids)
+            source_truncated = raw_source_tokens > used_source_tokens
+            input_ids = torch.tensor([source_ids], dtype=torch.long, device=self.device)
+            with torch.inference_mode():
+                generated = self.model.generate(
+                    input_ids=input_ids,
+                    do_sample=False,
+                    num_beams=1,
+                    max_length=max_length,
+                )
+            response_ids = generated[0, used_source_tokens:].tolist()
+            response = self.tokenizer.decode(response_ids)
+            process_response = getattr(self.model, "process_response", None)
+            if callable(process_response):
+                response = process_response(response)
+            history = [(query, response)]
         elapsed = time.time() - started
         if not isinstance(response, str) or not response.strip():
             raise InferenceInterfaceError("model returned an empty response")
@@ -148,4 +246,9 @@ class ChatGLM2InferenceInterface:
             "schema_error": schema_error,
             "inference_seconds": round(elapsed, 3),
             "history_turns": len(history),
+            "max_source_length": max_source_length,
+            "source_tokens_raw": raw_source_tokens,
+            "source_tokens_used": used_source_tokens,
+            "source_truncated": source_truncated,
+            "adapter_checkpoint": self.adapter_checkpoint,
         }

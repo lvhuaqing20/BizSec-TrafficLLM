@@ -25,8 +25,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--view-file", type=Path, required=True)
     parser.add_argument("--model-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--adapter-checkpoint",
+        type=Path,
+        help="PrefixEncoder-only checkpoint; omit for an explicit base-model run",
+    )
     parser.add_argument("--device", default="cuda:0")
     parser.add_argument("--max-length", type=int, default=1024)
+    parser.add_argument(
+        "--max-source-length",
+        type=int,
+        help="Source-token limit used during training; required for Adapter inference",
+    )
     return parser.parse_args()
 
 
@@ -72,13 +82,35 @@ def main() -> None:
         ),
     )
     request = serializer.serialize_inference(view, args.task)
-    interface = ChatGLM2InferenceInterface.from_pretrained(
-        args.model_dir, PROJECT_ROOT / "schemas", args.device
+    if args.adapter_checkpoint is None:
+        interface = ChatGLM2InferenceInterface.from_pretrained(
+            args.model_dir, PROJECT_ROOT / "schemas", args.device
+        )
+        inference_mode = "base_model"
+    else:
+        if args.max_source_length is None:
+            raise ValueError(
+                "--max-source-length is required with --adapter-checkpoint and must "
+                "match that checkpoint's training run"
+            )
+        interface = ChatGLM2InferenceInterface.from_adapter_checkpoint(
+            PROJECT_ROOT,
+            args.task,
+            args.model_dir,
+            args.adapter_checkpoint,
+            PROJECT_ROOT / "schemas",
+            args.device,
+        )
+        inference_mode = "prefix_adapter"
+    result = interface.predict(
+        request,
+        max_length=args.max_length,
+        max_source_length=args.max_source_length,
     )
-    result = interface.predict(request, max_length=args.max_length)
     result.update(
         {
-            "interface_version": "chatglm2-single-task-inference-v1",
+            "interface_version": "chatglm2-single-task-inference-v2",
+            "inference_mode": inference_mode,
             "model_dir": str(args.model_dir.resolve()),
             "view_file": str(args.view_file.resolve()),
             "device": args.device,
