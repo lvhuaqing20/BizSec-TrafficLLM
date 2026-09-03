@@ -99,6 +99,59 @@ class TrainingInterfaceTests(unittest.TestCase):
             with self.assertRaises(TrainingDataError):
                 list(iter_partition_records(forbidden, "detection", 0.05, 42))
 
+    def test_messages_reader_can_include_selected_datasets(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "messages" / "v1" / "examples" / "detection"
+            for dataset_id in ("alpha", "beta"):
+                path = root / dataset_id / "train.jsonl"
+                path.parent.mkdir(parents=True)
+                records = [
+                    make_record(
+                        f"{dataset_id}-{index}",
+                        dataset_id=dataset_id,
+                    )
+                    for index in range(3)
+                ]
+                path.write_text(
+                    "".join(json.dumps(record) + "\n" for record in records),
+                    encoding="utf-8",
+                )
+            selected = list(
+                iter_partition_records(
+                    root,
+                    "detection",
+                    0.05,
+                    42,
+                    partition="all",
+                    included_dataset_ids=["beta"],
+                )
+            )
+        self.assertEqual(
+            [record["metadata"]["dataset_id"] for record in selected],
+            ["beta", "beta", "beta"],
+        )
+
+    def test_messages_reader_rejects_unknown_included_dataset(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "messages" / "v1" / "examples" / "detection"
+            path = root / "alpha" / "train.jsonl"
+            path.parent.mkdir(parents=True)
+            path.write_text(
+                json.dumps(make_record("alpha-1", dataset_id="alpha")) + "\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(TrainingDataError, "not present"):
+                list(
+                    iter_partition_records(
+                        root,
+                        "detection",
+                        0.05,
+                        42,
+                        partition="all",
+                        included_dataset_ids=["missing"],
+                    )
+                )
+
     def test_dataset_label_balanced_sampling_is_reproducible(self):
         records = []
         for dataset_id in ("alpha", "beta", "gamma"):

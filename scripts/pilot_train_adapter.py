@@ -45,6 +45,16 @@ def parse_args() -> argparse.Namespace:
         default="sequential",
     )
     parser.add_argument("--sampling-seed", type=int)
+    parser.add_argument(
+        "--include-dataset",
+        action="append",
+        dest="included_datasets",
+        metavar="DATASET_ID",
+        help=(
+            "restrict training to one Messages v1 dataset; repeat this option "
+            "to include multiple datasets"
+        ),
+    )
     parser.add_argument("--log-every-steps", type=int, default=10)
     parser.add_argument("--checkpoint-every-steps", type=int, default=0)
     parser.add_argument("--summary-only", action="store_true")
@@ -81,6 +91,14 @@ def main() -> None:
         raise ValueError("checkpoint-every-steps cannot be negative")
     messages_root = PROJECT_ROOT / task_config["messages_root"]
     validation = task_config["validation"]
+    included_datasets = (
+        sorted(set(args.included_datasets)) if args.included_datasets else None
+    )
+    if included_datasets:
+        print(
+            f"[{args.task}] included_datasets={','.join(included_datasets)}",
+            flush=True,
+        )
     print(
         f"[{args.task}] selecting {required_records} train records "
         f"with strategy={args.sampling_strategy}",
@@ -99,6 +117,7 @@ def main() -> None:
                 float(validation["fraction"]),
                 int(validation["seed"]),
                 partition="train",
+                included_dataset_ids=included_datasets,
             ),
             args.task,
             required_records,
@@ -113,6 +132,7 @@ def main() -> None:
                 int(validation["seed"]),
                 partition="train",
                 limit=required_records,
+                included_dataset_ids=included_datasets,
             )
         )
         sampling_audit = {
@@ -226,6 +246,10 @@ def main() -> None:
             "formal_max_source_length": formal_max_source_length,
             "pilot_max_source_length": args.max_source_length,
             "max_target_length": int(task_config["max_target_length"]),
+            "dataset_filter": {
+                "included_dataset_ids": included_datasets,
+                "mode": "include" if included_datasets else "all",
+            },
             "sampling": sampling_audit,
             "progress": {
                 "log_every_steps": args.log_every_steps,

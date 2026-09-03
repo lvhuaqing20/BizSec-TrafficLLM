@@ -6,7 +6,7 @@ import json
 import hashlib
 from collections import defaultdict
 from pathlib import Path
-from typing import Any, DefaultDict, Dict, Iterable, List, Mapping, Tuple
+from typing import Any, DefaultDict, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 
 
 SUPPORTED_TASKS = {"business", "detection", "attack_type"}
@@ -21,7 +21,11 @@ def _reject_v2_path(path: Path) -> None:
         raise AdapterEvaluationError(f"refusing excluded v2 path: {path}")
 
 
-def iter_test_records(messages_root: Path, task: str):
+def iter_test_records(
+    messages_root: Path,
+    task: str,
+    included_dataset_ids: Optional[Iterable[str]] = None,
+):
     """Stream the held-out Messages v1 test split for final evaluation only."""
 
     if task not in SUPPORTED_TASKS:
@@ -33,6 +37,22 @@ def iter_test_records(messages_root: Path, task: str):
     paths = sorted(root.glob("*/test.jsonl"))
     if not paths:
         raise AdapterEvaluationError(f"no test.jsonl files found under: {root}")
+    included: Optional[Set[str]] = None
+    if included_dataset_ids is not None:
+        included = {
+            str(dataset_id).strip()
+            for dataset_id in included_dataset_ids
+            if str(dataset_id).strip()
+        }
+        if not included:
+            raise AdapterEvaluationError("included_dataset_ids cannot be empty")
+        available = {path.parent.name for path in paths}
+        unknown = sorted(included - available)
+        if unknown:
+            raise AdapterEvaluationError(
+                f"included datasets are not present under messages root: {unknown}"
+            )
+        paths = [path for path in paths if path.parent.name in included]
     for path in paths:
         _reject_v2_path(path)
         if not path.is_file() or path.stat().st_size == 0:
@@ -59,6 +79,12 @@ def iter_test_records(messages_root: Path, task: str):
                 ):
                     raise AdapterEvaluationError(
                         f"final evaluation only reads test records: {path}:{line_number}"
+                    )
+                dataset_id = metadata.get("dataset_id")
+                if dataset_id is not None and dataset_id != path.parent.name:
+                    raise AdapterEvaluationError(
+                        f"dataset mismatch at {path}:{line_number}: "
+                        f"{dataset_id!r} != {path.parent.name!r}"
                     )
                 yield record
 

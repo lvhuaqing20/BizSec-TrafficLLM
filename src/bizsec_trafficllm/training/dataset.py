@@ -6,7 +6,7 @@ import hashlib
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
-from typing import Any, DefaultDict, Dict, Iterable, Iterator, List, Mapping, Optional, Tuple
+from typing import Any, DefaultDict, Dict, Iterable, Iterator, List, Mapping, Optional, Set, Tuple
 
 
 SUPPORTED_TASKS = {"business", "detection", "attack_type"}
@@ -62,6 +62,7 @@ def iter_partition_records(
     seed: int,
     partition: str = "train",
     limit: Optional[int] = None,
+    included_dataset_ids: Optional[Iterable[str]] = None,
 ) -> Iterator[Dict[str, Any]]:
     """Stream validated records from a deterministic train/validation partition."""
 
@@ -72,8 +73,28 @@ def iter_partition_records(
     if limit is not None and limit <= 0:
         raise TrainingDataError("limit must be positive")
 
+    included: Optional[Set[str]] = None
+    if included_dataset_ids is not None:
+        included = {
+            str(dataset_id).strip()
+            for dataset_id in included_dataset_ids
+            if str(dataset_id).strip()
+        }
+        if not included:
+            raise TrainingDataError("included_dataset_ids cannot be empty")
+
+    paths = list(iter_message_files(Path(messages_root)))
+    if included is not None:
+        available = {path.parent.name for path in paths}
+        unknown = sorted(included - available)
+        if unknown:
+            raise TrainingDataError(
+                f"included datasets are not present under messages root: {unknown}"
+            )
+        paths = [path for path in paths if path.parent.name in included]
+
     yielded = 0
-    for path in iter_message_files(Path(messages_root)):
+    for path in paths:
         with path.open("r", encoding="utf-8") as handle:
             for line_number, line in enumerate(handle, start=1):
                 if not line.strip():
@@ -93,6 +114,16 @@ def iter_partition_records(
                 if not isinstance(metadata, Mapping) or metadata.get("split") != "train":
                     raise TrainingDataError(
                         f"training interface only reads train records: {path}:{line_number}"
+                    )
+                dataset_id = metadata.get("dataset_id")
+                if not isinstance(dataset_id, str) or not dataset_id:
+                    raise TrainingDataError(
+                        f"record is missing metadata.dataset_id: {path}:{line_number}"
+                    )
+                if dataset_id != path.parent.name:
+                    raise TrainingDataError(
+                        f"dataset mismatch at {path}:{line_number}: "
+                        f"{dataset_id!r} != {path.parent.name!r}"
                     )
                 sample_id = record.get("sample_id")
                 in_validation = is_validation_sample(

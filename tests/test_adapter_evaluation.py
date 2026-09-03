@@ -86,6 +86,56 @@ class AdapterEvaluationTests(unittest.TestCase):
             with self.assertRaisesRegex(AdapterEvaluationError, "excluded v2"):
                 list(iter_test_records(root, "detection"))
 
+    def test_iter_test_records_can_include_selected_datasets(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "messages" / "v1" / "detection"
+            for dataset_id in ("alpha", "beta"):
+                dataset = root / dataset_id
+                dataset.mkdir(parents=True)
+                record = {
+                    "sample_id": dataset_id,
+                    "task": "detection",
+                    "messages": [],
+                    "metadata": {"split": "test", "dataset_id": dataset_id},
+                }
+                (dataset / "test.jsonl").write_text(
+                    json.dumps(record) + "\n", encoding="utf-8"
+                )
+            selected = list(
+                iter_test_records(
+                    root,
+                    "detection",
+                    included_dataset_ids=["alpha"],
+                )
+            )
+        self.assertEqual([record["sample_id"] for record in selected], ["alpha"])
+
+    def test_iter_test_records_rejects_unknown_included_dataset(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "messages" / "v1" / "detection"
+            dataset = root / "alpha"
+            dataset.mkdir(parents=True)
+            (dataset / "test.jsonl").write_text(
+                json.dumps(
+                    {
+                        "sample_id": "alpha",
+                        "task": "detection",
+                        "messages": [],
+                        "metadata": {"split": "test", "dataset_id": "alpha"},
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(AdapterEvaluationError, "not present"):
+                list(
+                    iter_test_records(
+                        root,
+                        "detection",
+                        included_dataset_ids=["missing"],
+                    )
+                )
+
     def test_detection_metrics_count_invalid_as_false_negative(self):
         summary = summarize_adapter_predictions(
             "detection",

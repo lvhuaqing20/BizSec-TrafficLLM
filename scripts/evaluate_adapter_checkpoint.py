@@ -44,6 +44,16 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--limit", type=int)
     parser.add_argument("--log-every", type=int, default=100)
+    parser.add_argument(
+        "--include-dataset",
+        action="append",
+        dest="included_datasets",
+        metavar="DATASET_ID",
+        help=(
+            "restrict evaluation to one Messages v1 dataset; repeat this option "
+            "to include multiple datasets"
+        ),
+    )
     return parser.parse_args()
 
 
@@ -76,6 +86,14 @@ def main() -> None:
     )
     validation = config["validation"]
     messages_root = PROJECT_ROOT / config["messages_root"]
+    included_datasets = (
+        sorted(set(args.included_datasets)) if args.included_datasets else None
+    )
+    if included_datasets:
+        print(
+            f"[{args.task}] included_datasets={','.join(included_datasets)}",
+            flush=True,
+        )
     if args.partition == "validation":
         source_records = iter_partition_records(
             messages_root,
@@ -83,9 +101,14 @@ def main() -> None:
             float(validation["fraction"]),
             int(validation["seed"]),
             partition="validation",
+            included_dataset_ids=included_datasets,
         )
     else:
-        source_records = iter_test_records(messages_root, args.task)
+        source_records = iter_test_records(
+            messages_root,
+            args.task,
+            included_dataset_ids=included_datasets,
+        )
     if args.selection_strategy == "label-balanced":
         records = select_balanced_records(
             args.task,
@@ -202,6 +225,10 @@ def main() -> None:
                 if args.selection_strategy == "label-balanced"
                 else "all_records"
             ),
+            "dataset_filter": {
+                "included_dataset_ids": included_datasets,
+                "mode": "include" if included_datasets else "all",
+            },
             "expected_label_distribution": dict(
                 sorted(
                     Counter(str(row["expected"][label_key]) for row in rows).items()
