@@ -1,0 +1,35 @@
+diff --git a/dual-stage-tuning/main.py b/dual-stage-tuning/main.py
+index 2789a3e..ee030a5 100644
+--- a/dual-stage-tuning/main.py
++++ b/dual-stage-tuning/main.py
+@@ -47,7 +47,9 @@ from arguments import ModelArguments, DataTrainingArguments
+ logger = logging.getLogger(__name__)
+ 
+ # ptuning should mask this line
+-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
++# Respect the launcher/user setting so the published single-GPU script still
++# works while torchrun can use multiple visible GPUs on another testbed.
++os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")
+ # os.environ["CUDA_VISIBLE_DEVICES"] = "2,3,4"
+ 
+ def main():
+@@ -218,10 +220,15 @@ def main():
+         return model_inputs
+     
+     def print_dataset_example(example):
+-        print("input_ids", example["input_ids"])
+-        print("inputs", tokenizer.decode(example["input_ids"]))
+-        print("label_ids", example["labels"])
+-        print("labels", tokenizer.decode(example["labels"]))
++        # Keep the diagnostic without dumping more than 3,000 token IDs into
++        # every run log.  This changes logging only, not preprocessing/training.
++        input_ids = example["input_ids"]
++        label_ids = example["labels"]
++        active_labels = [token_id for token_id in label_ids if token_id != -100]
++        print("input_length", len(input_ids), "input_ids_head", input_ids[:16])
++        print("inputs_head", tokenizer.decode(input_ids[:128]))
++        print("active_label_ids", active_labels)
++        print("labels", tokenizer.decode(active_labels))
+ 
+     if training_args.do_train:
+         if "train" not in raw_datasets:

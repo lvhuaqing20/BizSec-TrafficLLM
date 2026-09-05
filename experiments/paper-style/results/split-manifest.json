@@ -1,0 +1,229 @@
+{
+  "description": "BizSec CSTNET Business Messages v1 converted for TrafficLLM-style training",
+  "seed": 42,
+  "split_algorithm": "per-label stable SHA-256 ranking; 8:1:1",
+  "instruction_mapping": "system content + two newlines + 'Traffic view:' + newline + user content",
+  "target_mapping": "unchanged assistant JSON string",
+  "sources": {
+    "train": {
+      "path": "$XM_ROOT/BizSec-TrafficLLM/artifacts/datasets/messages/v1/examples/business/cstnet-2023/train.jsonl",
+      "sha256": "843966f45a6b1636c052ccd8a159cd0aee4eaca8e021eca29f6f64182572fa57"
+    },
+    "test": {
+      "path": "$XM_ROOT/BizSec-TrafficLLM/artifacts/datasets/messages/v1/examples/business/cstnet-2023/test.jsonl",
+      "sha256": "2f3702581401c841ff163705af1f3696b5262840b45ff167510da822e04c9d2d"
+    }
+  },
+  "total_records": 97707,
+  "unique_sample_ids": 97707,
+  "per_class": {
+    "163Mail": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "51cto": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Acm": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Adobe": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Alibaba": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Alicdn": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Alipay": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Amap": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "AmazonAWS": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "AmpProject": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Apple": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Arxiv": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Asus": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Atlassian": {
+      "total": 4061,
+      "train": 3248,
+      "validation": 406,
+      "test": 407
+    },
+    "AzureEdge": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Baidu": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Bilibili": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Biligame": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "Booking": {
+      "total": 5000,
+      "train": 4000,
+      "validation": 500,
+      "test": 500
+    },
+    "LA": {
+      "total": 3646,
+      "train": 2916,
+      "validation": 364,
+      "test": 366
+    }
+  },
+  "outputs": {
+    "train": {
+      "path": "$XM_ROOT/bizsec-paper-style-experiment/data/cstnet-business-8-1-1/bizsec_cstnet_business_train.json",
+      "records": 78164,
+      "sha256": "60033829e6a6ef64e6230ba8614532e978ea41bdee73fcdd2081b37aa237bbb2",
+      "labels": {
+        "163Mail": 4000,
+        "51cto": 4000,
+        "Acm": 4000,
+        "Adobe": 4000,
+        "Alibaba": 4000,
+        "Alicdn": 4000,
+        "Alipay": 4000,
+        "Amap": 4000,
+        "AmazonAWS": 4000,
+        "AmpProject": 4000,
+        "Apple": 4000,
+        "Arxiv": 4000,
+        "Asus": 4000,
+        "Atlassian": 3248,
+        "AzureEdge": 4000,
+        "Baidu": 4000,
+        "Bilibili": 4000,
+        "Biligame": 4000,
+        "Booking": 4000,
+        "LA": 2916
+      }
+    },
+    "validation": {
+      "path": "$XM_ROOT/bizsec-paper-style-experiment/data/cstnet-business-8-1-1/bizsec_cstnet_business_validation.json",
+      "records": 9770,
+      "sha256": "984152bc0c0f923bfd3d874d6fdf1389ba66987627d54547aec7d653f6422805",
+      "labels": {
+        "163Mail": 500,
+        "51cto": 500,
+        "Acm": 500,
+        "Adobe": 500,
+        "Alibaba": 500,
+        "Alicdn": 500,
+        "Alipay": 500,
+        "Amap": 500,
+        "AmazonAWS": 500,
+        "AmpProject": 500,
+        "Apple": 500,
+        "Arxiv": 500,
+        "Asus": 500,
+        "Atlassian": 406,
+        "AzureEdge": 500,
+        "Baidu": 500,
+        "Bilibili": 500,
+        "Biligame": 500,
+        "Booking": 500,
+        "LA": 364
+      }
+    },
+    "test": {
+      "path": "$XM_ROOT/bizsec-paper-style-experiment/data/cstnet-business-8-1-1/bizsec_cstnet_business_test.json",
+      "records": 9773,
+      "sha256": "91f7a80c6e630afad6ebb520926cce979df752b6c4e22d007ae645ae779cef4a",
+      "labels": {
+        "163Mail": 500,
+        "51cto": 500,
+        "Acm": 500,
+        "Adobe": 500,
+        "Alibaba": 500,
+        "Alicdn": 500,
+        "Alipay": 500,
+        "Amap": 500,
+        "AmazonAWS": 500,
+        "AmpProject": 500,
+        "Apple": 500,
+        "Arxiv": 500,
+        "Asus": 500,
+        "Atlassian": 407,
+        "AzureEdge": 500,
+        "Baidu": 500,
+        "Bilibili": 500,
+        "Biligame": 500,
+        "Booking": 500,
+        "LA": 366
+      }
+    }
+  },
+  "cross_split_overlap": {
+    "train_validation": 0,
+    "train_test": 0,
+    "validation_test": 0
+  }
+}

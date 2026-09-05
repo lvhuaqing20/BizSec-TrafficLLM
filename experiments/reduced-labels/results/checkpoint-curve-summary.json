@@ -1,0 +1,1069 @@
+{
+  "status": "passed",
+  "comparison": "single-seed descriptive checkpoint curve",
+  "baseline": {
+    "samples": 300,
+    "schema_valid_rate": 1.0,
+    "accuracy": 0.17333333333333334,
+    "macro_f1": 0.1476023606023606,
+    "source_truncated": 0,
+    "summary_path": "$XM_ROOT/runs/large-only-business-v1/01-old-20k-baseline-300/business-20260903-104340/evaluation-summary.json"
+  },
+  "sample_identity": {
+    "all_checkpoints_match_first": true,
+    "all_checkpoints_match_old_baseline": true,
+    "ordered_sample_count": 300
+  },
+  "best_checkpoint": {
+    "step": 19000,
+    "samples": 300,
+    "schema_valid_rate": 1.0,
+    "accuracy": 0.18333333333333332,
+    "macro_f1": 0.15338696488696488,
+    "source_truncated": 0,
+    "same_ordered_sample_ids_as_first_checkpoint": true,
+    "same_ordered_sample_ids_as_old_baseline": true,
+    "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-019000/business-20260903-135453/evaluation-summary.json",
+    "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-019000/pytorch_model.bin",
+    "checkpoint_sha256": "5ab830d6dab780777d50f14a6fbd88d8f52c97ee65a4f6984be35d512ce1efce",
+    "by_dataset": {
+      "app53-2023": {
+        "samples": 108,
+        "schema_valid_rate": 1.0,
+        "accuracy": 0.037037037037037035,
+        "macro_f1": 0.020241171403962102,
+        "source_truncated": 0
+      },
+      "cstnet-2023": {
+        "samples": 40,
+        "schema_valid_rate": 1.0,
+        "accuracy": 0.125,
+        "macro_f1": 0.07649572649572649,
+        "source_truncated": 0
+      },
+      "cw100-2024": {
+        "samples": 109,
+        "schema_valid_rate": 1.0,
+        "accuracy": 0.045871559633027525,
+        "macro_f1": 0.01113406795224977,
+        "source_truncated": 0
+      },
+      "iscx-tor-2016": {
+        "samples": 16,
+        "schema_valid_rate": 1.0,
+        "accuracy": 0.875,
+        "macro_f1": 0.8916666666666667,
+        "source_truncated": 0
+      },
+      "iscx-vpn-2016": {
+        "samples": 27,
+        "schema_valid_rate": 1.0,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "source_truncated": 0
+      }
+    }
+  },
+  "curve": [
+    {
+      "step": 1000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.01,
+      "macro_f1": 0.0015110356536502546,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-001000/business-20260903-134153/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-001000/pytorch_model.bin",
+      "checkpoint_sha256": "57a6ce2f2da3892a418c25b9244c2b0162882cc2756655be1008ba9779f7ca1e",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.05,
+          "macro_f1": 0.02,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.037037037037037035,
+          "macro_f1": 0.01020408163265306,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 2000,
+      "samples": 300,
+      "schema_valid_rate": 0.8066666666666666,
+      "accuracy": 0.043333333333333335,
+      "macro_f1": 0.028716430716430718,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-002000/business-20260903-134156/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-002000/pytorch_model.bin",
+      "checkpoint_sha256": "e1caaf4229d745aa7cfe3d5819060e87c86d4485bb0ad5812ca993a995c4a23e",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 0.6759259259259259,
+          "accuracy": 0.0,
+          "macro_f1": 0.0,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 0.675,
+          "accuracy": 0.05,
+          "macro_f1": 0.05,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.01834862385321101,
+          "macro_f1": 0.0006552006552006553,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 0.9375,
+          "accuracy": 0.125,
+          "macro_f1": 0.125,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 0.6666666666666666,
+          "accuracy": 0.25925925925925924,
+          "macro_f1": 0.17653061224489797,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 3000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.08,
+      "macro_f1": 0.055343256390875444,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-003000/business-20260903-134155/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-003000/pytorch_model.bin",
+      "checkpoint_sha256": "e136db865f81ede776d4b9f483864626d6556c589608f3cc26a6b2c533c317d8",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.018518518518518517,
+          "macro_f1": 0.0006922810661128419,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.025,
+          "macro_f1": 0.01,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.045871559633027525,
+          "macro_f1": 0.011391386391386392,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.0625,
+          "macro_f1": 0.0625,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.5555555555555556,
+          "macro_f1": 0.5085034013605443,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 4000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.12333333333333334,
+      "macro_f1": 0.08899563091229756,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-004000/business-20260903-134407/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-004000/pytorch_model.bin",
+      "checkpoint_sha256": "68412902f207f7bb75ebd36bf38f002541d6e685d0f69631049ce3177f1cd03e",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.018518518518518517,
+          "macro_f1": 0.001001001001001001,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.075,
+          "macro_f1": 0.04859649122807017,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.027522935779816515,
+          "macro_f1": 0.0024350649350649354,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.6875,
+          "macro_f1": 0.7083333333333334,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.6666666666666666,
+          "macro_f1": 0.5809523809523809,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 5000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.11333333333333333,
+      "macro_f1": 0.08944355592242915,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-005000/business-20260903-134406/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-005000/pytorch_model.bin",
+      "checkpoint_sha256": "9d3817bc832237b466a52fe29b3bb0a552b412753e58b576598a0a4a8449dd2a",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.009259259259259259,
+          "macro_f1": 0.0033670033670033664,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.05,
+          "macro_f1": 0.05,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.03669724770642202,
+          "macro_f1": 0.008816535577098958,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.3125,
+          "macro_f1": 0.26666666666666666,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8148148148148148,
+          "macro_f1": 0.7666666666666666,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 6000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.10666666666666667,
+      "macro_f1": 0.08615045412104236,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-006000/business-20260903-134358/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-006000/pytorch_model.bin",
+      "checkpoint_sha256": "5c0b525745996ecbc279d7f141f3c41bf00c6c6f9bf86f4a7ea1de7fa75de66d",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.018518518518518517,
+          "macro_f1": 0.007098765432098765,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.025,
+          "macro_f1": 0.004347826086956521,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.027522935779816515,
+          "macro_f1": 0.003948306595365419,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.5,
+          "macro_f1": 0.5625,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.6666666666666666,
+          "macro_f1": 0.630952380952381,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 7000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.15333333333333332,
+      "macro_f1": 0.11811733872768355,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-007000/business-20260903-134619/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-007000/pytorch_model.bin",
+      "checkpoint_sha256": "cc887a85f1421651be533b65ea5e39c516aa924b4d48e91f38c089cff05c74bb",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.046296296296296294,
+          "macro_f1": 0.008139187574671445,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.05,
+          "macro_f1": 0.05,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.027522935779816515,
+          "macro_f1": 0.004506039415130325,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8125,
+          "macro_f1": 0.8333333333333333,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8518518518518519,
+          "macro_f1": 0.8142857142857143,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 8000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.12666666666666668,
+      "macro_f1": 0.11213675213675212,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-008000/business-20260903-134621/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-008000/pytorch_model.bin",
+      "checkpoint_sha256": "1655eb35e545bc62f9e366ebcdddd8ef16005c42ce84c1fe99950a01673e262b",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.018518518518518517,
+          "macro_f1": 0.0014524328249818444,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.025,
+          "macro_f1": 0.03333333333333333,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.009174311926605505,
+          "macro_f1": 0.0017316017316017318,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.625,
+          "macro_f1": 0.6666666666666666,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8888888888888888,
+          "macro_f1": 0.8523809523809524,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 9000,
+      "samples": 300,
+      "schema_valid_rate": 0.9133333333333333,
+      "accuracy": 0.14666666666666667,
+      "macro_f1": 0.12405502645502646,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-009000/business-20260903-134610/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-009000/pytorch_model.bin",
+      "checkpoint_sha256": "5288092fb1c010b48e7698226fb88cc244a94d74deb092734f9f85cb50fd83fe",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.037037037037037035,
+          "macro_f1": 0.019298245614035085,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.05,
+          "macro_f1": 0.05,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 0.7614678899082569,
+          "accuracy": 0.01834862385321101,
+          "macro_f1": 0.006406926406926408,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8125,
+          "macro_f1": 0.8083333333333333,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8518518518518519,
+          "macro_f1": 0.8333333333333334,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 10000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.16666666666666666,
+      "macro_f1": 0.14298723361262064,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-010000/business-20260903-134824/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-010000/pytorch_model.bin",
+      "checkpoint_sha256": "77b6391f3096ecf639c33bb1327b004c3b8aaf7350826b1b6841430570f7c2cf",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.009259259259259259,
+          "macro_f1": 0.001277139208173691,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.125,
+          "macro_f1": 0.07532467532467532,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.03669724770642202,
+          "macro_f1": 0.003032756716967243,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.875,
+          "macro_f1": 0.875,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.9629629629629629,
+          "macro_f1": 0.9619047619047619,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 11000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.16333333333333333,
+      "macro_f1": 0.13400600151727968,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-011000/business-20260903-134839/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-011000/pytorch_model.bin",
+      "checkpoint_sha256": "3baeec988a1662315ef80707300ba6a327d11d2033f494f6b4361f55e84c46d8",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.046296296296296294,
+          "macro_f1": 0.006008932909517705,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.125,
+          "macro_f1": 0.07666666666666666,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.03669724770642202,
+          "macro_f1": 0.002882831454260025,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.6875,
+          "macro_f1": 0.75,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8888888888888888,
+          "macro_f1": 0.8904761904761905,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 12000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.14333333333333334,
+      "macro_f1": 0.11866087675765097,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-012000/business-20260903-134818/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-012000/pytorch_model.bin",
+      "checkpoint_sha256": "32cdfb25eb5a7ca921debff1c3635c3dbc0841f44df241d6a17b8f6c9b6c11b0",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.009259259259259259,
+          "macro_f1": 0.0013717421124828531,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.075,
+          "macro_f1": 0.075,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.03669724770642202,
+          "macro_f1": 0.007902097902097902,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.875,
+          "macro_f1": 0.8666666666666667,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.7777777777777778,
+          "macro_f1": 0.7333333333333333,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 13000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.15666666666666668,
+      "macro_f1": 0.11859020992269076,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-013000/business-20260903-135034/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-013000/pytorch_model.bin",
+      "checkpoint_sha256": "2590d7017f8521340a5529217dab4e1e3873d01f40094a984fc28547910cb11c",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.009259259259259259,
+          "macro_f1": 0.0004257130693912304,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.1,
+          "macro_f1": 0.07666666666666667,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.06422018348623854,
+          "macro_f1": 0.01813903743315508,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.875,
+          "macro_f1": 0.9166666666666666,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.7777777777777778,
+          "macro_f1": 0.7238095238095238,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 14000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.17,
+      "macro_f1": 0.14760921978998534,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-014000/business-20260903-135049/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-014000/pytorch_model.bin",
+      "checkpoint_sha256": "12d5e39d8e7401f49ca49cf2bf2123103011f91e709a5f416700f3361e3dbc83",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.037037037037037035,
+          "macro_f1": 0.019244734931009443,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.175,
+          "macro_f1": 0.13333333333333336,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.03669724770642202,
+          "macro_f1": 0.004924307788846184,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.6875,
+          "macro_f1": 0.7916666666666667,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.9259259259259259,
+          "macro_f1": 0.8904761904761905,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 15000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.16666666666666666,
+      "macro_f1": 0.14425957933356864,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-015000/business-20260903-135029/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-015000/pytorch_model.bin",
+      "checkpoint_sha256": "1f0528b75f08984dfcb0931bd9e2ecf5c089d7a44ee69e671ac6bb30e3db1112",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.018518518518518517,
+          "macro_f1": 0.013320337881741392,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.175,
+          "macro_f1": 0.16142857142857142,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.06422018348623854,
+          "macro_f1": 0.018083398083398088,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.75,
+          "macro_f1": 0.8333333333333334,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8148148148148148,
+          "macro_f1": 0.7833333333333333,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 16000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.16,
+      "macro_f1": 0.13920122310639554,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-016000/business-20260903-135244/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-016000/pytorch_model.bin",
+      "checkpoint_sha256": "806c4bc99a375c8ba1f2c841036c101b130967ffb24415ddbd8eeb2adaa1fc64",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.046296296296296294,
+          "macro_f1": 0.020616477043492294,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.125,
+          "macro_f1": 0.13333333333333333,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.027522935779816515,
+          "macro_f1": 0.002534965034965035,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.75,
+          "macro_f1": 0.8125,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8518518518518519,
+          "macro_f1": 0.8047619047619047,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 17000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.15,
+      "macro_f1": 0.12463022380669439,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-017000/business-20260903-135255/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-017000/pytorch_model.bin",
+      "checkpoint_sha256": "4cd1282ea45f73bd0597f04a27b6c702a243e97789b2fc8485873b4f99710fd5",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.027777777777777776,
+          "macro_f1": 0.0020705541320495896,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.125,
+          "macro_f1": 0.07952380952380952,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.027522935779816515,
+          "macro_f1": 0.002875816993464052,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.6875,
+          "macro_f1": 0.7916666666666666,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8518518518518519,
+          "macro_f1": 0.7952380952380952,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 18000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.17333333333333334,
+      "macro_f1": 0.1461155881155881,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-018000/business-20260903-135241/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-018000/pytorch_model.bin",
+      "checkpoint_sha256": "9bbbab79065c82c10721387b09a8677791b7ef86f9e5c234688b69d165501078",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.018518518518518517,
+          "macro_f1": 0.018518518518518517,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.15,
+          "macro_f1": 0.125,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.027522935779816515,
+          "macro_f1": 0.003232323232323232,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.9375,
+          "macro_f1": 0.9333333333333333,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.9629629629629629,
+          "macro_f1": 0.9142857142857144,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 19000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.18333333333333332,
+      "macro_f1": 0.15338696488696488,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-019000/business-20260903-135453/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/checkpoint-step-019000/pytorch_model.bin",
+      "checkpoint_sha256": "5ab830d6dab780777d50f14a6fbd88d8f52c97ee65a4f6984be35d512ce1efce",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.037037037037037035,
+          "macro_f1": 0.020241171403962102,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.125,
+          "macro_f1": 0.07649572649572649,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.045871559633027525,
+          "macro_f1": 0.01113406795224977,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.875,
+          "macro_f1": 0.8916666666666667,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "source_truncated": 0
+        }
+      }
+    },
+    {
+      "step": 20000,
+      "samples": 300,
+      "schema_valid_rate": 1.0,
+      "accuracy": 0.16666666666666666,
+      "macro_f1": 0.12307821409486226,
+      "source_truncated": 0,
+      "same_ordered_sample_ids_as_first_checkpoint": true,
+      "same_ordered_sample_ids_as_old_baseline": true,
+      "summary_path": "$XM_ROOT/runs/large-only-business-v1/03-checkpoint-validation-300/step-020000/business-20260903-135500/evaluation-summary.json",
+      "checkpoint_path": "$XM_ROOT/runs/large-only-business-v1/02-large-only-20k/business-20260903-104505/pytorch_model.bin",
+      "checkpoint_sha256": "f6a4e211431822a0c956ee8ef3148733155aa3af23afd1a952d7af68eac5ab33",
+      "by_dataset": {
+        "app53-2023": {
+          "samples": 108,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.018518518518518517,
+          "macro_f1": 0.001567967254241764,
+          "source_truncated": 0
+        },
+        "cstnet-2023": {
+          "samples": 40,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.25,
+          "macro_f1": 0.2007936507936508,
+          "source_truncated": 0
+        },
+        "cw100-2024": {
+          "samples": 109,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.045871559633027525,
+          "macro_f1": 0.011258806552924201,
+          "source_truncated": 0
+        },
+        "iscx-tor-2016": {
+          "samples": 16,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.8125,
+          "macro_f1": 0.8041666666666667,
+          "source_truncated": 0
+        },
+        "iscx-vpn-2016": {
+          "samples": 27,
+          "schema_valid_rate": 1.0,
+          "accuracy": 0.7407407407407407,
+          "macro_f1": 0.6738095238095239,
+          "source_truncated": 0
+        }
+      }
+    }
+  ]
+}

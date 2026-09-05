@@ -49,3 +49,14 @@ artifacts/datasets/
 # Regenerable large validation slices
 reports/**/pilot_*/
 reports/**/stratified_*/
+
+# Experiment code/results are tracked; runtime artifacts are not.
+experiments/**/data/
+experiments/**/runs/
+experiments/**/cache/
+experiments/**/logs/
+experiments/**/models/
+experiments/**/checkpoints/
+experiments/**/predictions.jsonl
+experiments/**/evaluation-rows.json
+experiments/**/training_args.bin
